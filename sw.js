@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'pea-finance-v3.0.9';
+﻿const CACHE_NAME = 'pea-finance-v3.0.10';
 const ASSETS = [
   './',
   './index.html',
