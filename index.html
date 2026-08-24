@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.17) ==================== */
+    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.18) ==================== */
     /* 1. PEA Royal Purple & Gold (Default) */
         :root {
       --safe-top: env(safe-area-inset-top, 0px);
@@ -4497,6 +4497,7 @@
 
         <!-- ==================== TAB 6: เธเธฑเธ”เธเธฒเธฃ / เธเนเธญเธกเธนเธฅเธเธนเนเธเธฑเธ”เธ—เธณ & เธเธนเนเธกเธทเธญ (SETTINGS) ==================== -->
         <!-- ==================== TAB 6: จัดการ / ข้อมูลผู้จัดทำ & คู่มือ (SETTINGS) ==================== -->
+        <!-- ==================== TAB 6: จัดการ / ข้อมูลผู้จัดทำ & คู่มือ (SETTINGS) ==================== -->
     <div class="tab-panel" id="tab-settings">
 
       <!-- 1. ข้อมูลโปรไฟล์ผู้ใช้งาน (แก้ไขรูปถ่าย & ข้อมูลส่วนตัว) -->
@@ -4841,11 +4842,16 @@
               <!-- Meta Dates & Version -->
               <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:var(--text-muted); border-top:1px dashed var(--border); padding-top:8px; flex-wrap:wrap; gap:6px;">
                 <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 25 สิงหาคม 2569</span>
-                <span class="badge badge-purple" id="creatorCardVersion">&#x26A1; PEA Financial Planner v3.0.17</span>
+                <span class="badge badge-purple" id="creatorCardVersion">&#x26A1; PEA Financial Planner v3.0.18</span>
               </div>
 
+              <!-- Force Update & Refresh Button -->
+              <button type="button" class="btn btn-purple" style="width:100%; font-size:0.84rem; font-weight:700; padding:10px 14px; border-radius:10px; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 12px rgba(124,58,237,0.3); margin-top:10px; margin-bottom:8px;" onclick="forceAppUpdate()" title="ตรวจสอบและโหลดเวอร์ชันล่าสุดจากเซิร์ฟเวอร์">
+                <span>🔄 ตรวจสอบ &amp; โหลดเวอร์ชันล่าสุด (Force Update)</span>
+              </button>
+
               <!-- Admin Controls Button -->
-              <div style="margin-top:12px; display:flex; justify-content:center; gap:8px;">
+              <div style="display:flex; justify-content:center; gap:8px;">
                 <button type="button" class="btn btn-outline" style="font-size:0.72rem; padding:4px 10px; width:auto; border-color:var(--pea-purple-soft); color:var(--pea-purple-light);" onclick="openMetaModal()">
                   <span>⚙️ จัดการข้อมูลเวอร์ชัน &amp; ผู้จัดทำ</span>
                 </button>
@@ -5518,7 +5524,7 @@
     if ('caches' in window) {
       caches.keys().then(keys => {
         keys.forEach(k => {
-          if (k !== 'pea-finance-v3.0.17') {
+          if (k !== 'pea-finance-v3.0.18') {
             console.log('Purging old cache:', k);
             caches.delete(k);
           }
@@ -9814,7 +9820,7 @@
     tempProfileAvatar = null;
 
         // ==================== APP METADATA & VERSION CONFIG ====================
-                                                                                // ==================== THEME & PALETTE CONTROLLER ====================
+                                                                                    // ==================== THEME & PALETTE CONTROLLER ====================
     const PALETTE_KEY = 'pea_finance_color_palette';
 
     function getPaletteDisplayName(p) {
@@ -9896,7 +9902,7 @@
     const DEFAULT_USER_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iIzdDM0FFRCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjRkZGRkZGIi8+PHBhdGggZD0iTTIwIDg2IEMyMCA2NiAzNSA2MiA1MCA2MiBDNjUgNjIgODAgNjYgODAgODYgWiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==';
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v3.0.17';
+    const CURRENT_APP_VERSION = 'v3.0.18';
     const CURRENT_RELEASE_DATE = '25 สิงหาคม 2569';
 
     const DEFAULT_APP_META = {
