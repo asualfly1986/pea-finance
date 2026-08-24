@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'pea-finance-v2.8.1';
+﻿const CACHE_NAME = 'pea-finance-v2.8.2';
 const ASSETS = [
   './',
   './index.html',
@@ -29,6 +29,17 @@ self.addEventListener('activate', (event) => {
     })
   );
   self.clients.claim();
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
+  if (event.data && event.data.action === 'clearCache') {
+    caches.keys().then((keys) => {
+      return Promise.all(keys.map((k) => caches.delete(k)));
+    });
+  }
 });
 
 // Network-First strategy for HTML navigation (always gets latest from GitHub if online)
