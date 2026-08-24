@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.7) ==================== */
+    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.8) ==================== */
     /* 1. PEA Royal Purple & Gold (Default) */
     :root, [data-palette="pea-purple"] {
       --pea-dark: #1E0B38;
@@ -4416,7 +4416,7 @@
         </div>
       </div>
 
-            <!-- Theme & Color Customization Palette Card (เนเธซเธกเน v3.0.7) -->
+            <!-- Theme & Color Customization Palette Card (เนเธซเธกเน v3.0.8) -->
       <div class="card" style="border:1.5px solid var(--pea-purple-soft); background:linear-gradient(135deg, var(--card-bg), var(--pea-purple-bg)); margin-bottom:14px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:6px;">
           <div style="display:flex; align-items:center; gap:8px;">
@@ -4673,7 +4673,7 @@
               <!-- Release Date & System Version -->
               <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
                 <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 25 สิงหาคม 2569</span>
-                <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v3.0.7</span>
+                <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v3.0.8</span>
               </div>
 
               <!-- Force Update & Refresh Button -->
@@ -5406,7 +5406,7 @@
     if ('caches' in window) {
       caches.keys().then(keys => {
         keys.forEach(k => {
-          if (k !== 'pea-finance-v3.0.7') {
+          if (k !== 'pea-finance-v3.0.8') {
             console.log('Purging old cache:', k);
             caches.delete(k);
           }
@@ -9702,16 +9702,16 @@
     tempProfileAvatar = null;
 
         // ==================== APP METADATA & VERSION CONFIG ====================
-                                        // ==================== THEME & PALETTE CONTROLLER ====================
+                                            // ==================== THEME & PALETTE CONTROLLER ====================
     const PALETTE_KEY = 'pea_finance_color_palette';
 
     function getPaletteDisplayName(p) {
       switch (p) {
-        case 'emerald-wealth': return '๐ฒ Emerald Wealth (เน€เธเธตเธขเธงเธกเธฃเธเธ•)';
-        case 'ocean-blue': return '๐ Ocean Blue (เธเนเธณเน€เธเธดเธเนเธเธเนเธเธฃเน)';
-        case 'sunset-gold': return '๐… Sunset Amber (เธชเนเธกเธ—เธญเธเธญเธณเธเธฑเธ)';
-        case 'midnight-oled': return '๐–ค Midnight OLED (เธ”เธณเธชเธเธดเธ—-เธเธตเธญเธญเธ)';
-        default: return 'โก PEA Royal Purple (เธกเนเธงเธเธ—เธญเธ เธเธเธ .)';
+        case 'emerald-wealth': return '🌲 Emerald Wealth (เขียวมรกต)';
+        case 'ocean-blue': return '🌊 Ocean Blue (น้ำเงินแซฟไฟร์)';
+        case 'sunset-gold': return '🌅 Sunset Amber (ส้มทองอำพัน)';
+        case 'midnight-oled': return '🖤 Midnight OLED (ดำสนิท-นีออน)';
+        default: return '⚡ PEA Royal Purple (ม่วงทอง กฟภ.)';
       }
     }
 
@@ -9731,7 +9731,7 @@
         try { renderAnalyticsDashboard(true); } catch(e){}
       }
 
-      showToast('๐จ เน€เธเธฅเธตเนเธขเธเธเธตเธกเธชเธตเน€เธเนเธ ' + getPaletteDisplayName(chosen) + ' เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง!');
+      showToast('🎨 เปลี่ยนธีมสีเป็น ' + getPaletteDisplayName(chosen) + ' เรายบร้อยแล้ว!');
     }
 
     function initTheme() {
@@ -9745,10 +9745,10 @@
     }
 
     function updateThemeUI(theme, palette) {
-      if ($('themeIcon')) $('themeIcon').textContent = theme === 'dark' ? 'โ€๏ธ' : '๐';
-      if ($('paletteModeIcon')) $('paletteModeIcon').textContent = theme === 'dark' ? '๐' : 'โ€๏ธ';
-      if ($('paletteModeLabel')) $('paletteModeLabel').textContent = theme === 'dark' ? 'เนเธซเธกเธ”เธกเธทเธ” (Dark Mode)' : 'เนเธซเธกเธ”เธชเธงเนเธฒเธ (Light Mode)';
-      if ($('paletteModeBtnText')) $('paletteModeBtnText').textContent = theme === 'dark' ? 'โ€๏ธ เธชเธฅเธฑเธเน€เธเนเธเนเธซเธกเธ”เธชเธงเนเธฒเธ' : '๐ เธชเธฅเธฑเธเน€เธเนเธเนเธซเธกเธ”เธกเธทเธ”';
+      if ($('themeIcon')) $('themeIcon').textContent = (theme === 'dark') ? '☀️' : '🌙';
+      if ($('paletteModeIcon')) $('paletteModeIcon').textContent = (theme === 'dark') ? '🌙' : '☀️';
+      if ($('paletteModeLabel')) $('paletteModeLabel').textContent = (theme === 'dark') ? 'โหมดมืด (Dark Mode)' : 'โหมดสว่าง (Light Mode)';
+      if ($('paletteModeBtnText')) $('paletteModeBtnText').textContent = (theme === 'dark') ? '☀️ สลับเป็นโหมดสว่าง' : '🌙 สลับเป็นโหมดมืด';
 
       const validPalettes = ['pea-purple', 'emerald-wealth', 'ocean-blue', 'sunset-gold', 'midnight-oled'];
       validPalettes.forEach(p => {
@@ -9767,7 +9767,7 @@
 
     function toggleDarkMode() {
       const current = document.documentElement.getAttribute('data-theme') || 'light';
-      const next = current === 'dark' ? 'light' : 'dark';
+      const next = (current === 'dark') ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem(THEME_KEY, next); } catch(e){}
       
@@ -9784,15 +9784,15 @@
     const DEFAULT_USER_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iIzdDM0FFRCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjRkZGRkZGIi8+PHBhdGggZD0iTTIwIDg2IEMyMCA2NiAzNSA2MiA1MCA2MiBDNjUgNjIgODAgNjYgODAgODYgWiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==';
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v3.0.7';
-    const CURRENT_RELEASE_DATE = '25 เธชเธดเธเธซเธฒเธเธก 2569';
+    const CURRENT_APP_VERSION = 'v3.0.8';
+    const CURRENT_RELEASE_DATE = '25 สิงหาคม 2569';
 
     const DEFAULT_APP_META = {
-      creatorName: 'เธเธฒเธขเธญเธ เธดเธเธฒเธ•เธด เธขเธธเธเธดเธ',
+      creatorName: 'นายอภิชาติ ยุพิน',
       creatorEmpId: '504195',
-      creatorPosition: 'เธเธเธฑเธเธเธฒเธเธเนเธฒเธ (เธเธเธดเธเธฑเธ•เธดเธเธฒเธฃเธฃเธฐเธเธเนเธเธเนเธฒ) เธฃเธฐเธ”เธฑเธ 6',
-      creatorAffiliationShort: 'เธเธเธ./เธเธเธช.เธเธ.2/เธเธเธ.เธเธ./เธเธเธ.1/เธชเธฒเธขเธเธฒเธ (เธ)',
-      creatorAffiliationFull: 'เนเธเธเธเธเธเธดเธเธฑเธ•เธดเธเธฒเธฃเนเธฅเธฐเธเธณเธฃเธธเธเธฃเธฑเธเธฉเธฒเธฃเธฐเธเธเนเธเธเนเธฒ\nเธเธฒเธฃเนเธเธเนเธฒเธชเนเธงเธเธ เธนเธกเธดเธ เธฒเธเธชเธฒเธเธฒเน€เธกเธทเธญเธเธเธญเธเนเธเนเธ 2\nเธเธฒเธฃเนเธเธเนเธฒเธชเนเธงเธเธ เธนเธกเธดเธ เธฒเธเธเธฑเธเธซเธงเธฑเธ”เธเธญเธเนเธเนเธ\nเธเธฒเธฃเนเธเธเนเธฒเธชเนเธงเธเธ เธนเธกเธดเธ เธฒเธ เน€เธเธ• 1 (เธ เธฒเธเธ•เธฐเธงเธฑเธเธญเธญเธเน€เธเธตเธขเธเน€เธซเธเธทเธญ) เธเธฑเธเธซเธงเธฑเธ”เธญเธธเธ”เธฃเธเธฒเธเธต\nเธชเธฒเธขเธเธฒเธเธ เธฒเธเธ•เธฐเธงเธฑเธเธญเธญเธเน€เธเธตเธขเธเน€เธซเธเธทเธญ',
+      creatorPosition: 'พนักงานช่าง (ปฏิบัติการระบบไฟฟ้า) ระดับ 6',
+      creatorAffiliationShort: 'ผปบ./กฟส.ขก.2/กฟจ.ขก./กฟฉ.1/สายงาน (ฉ)',
+      creatorAffiliationFull: 'แผนกปฏิบัติการและบำรุงรักษาระบบไฟฟ้า\nการไฟฟ้าส่วนภูมิภาคสาขาเมืองขอนแก่น 2\nการไฟฟ้าส่วนภูมิภาคจังหวัดขอนแก่น\nการไฟฟ้าส่วนภูมิภาค เขต 1 (ภาคตะวันออกเฉียงเหนือ) จังหวัดอุดรธานี\nสายงานภาคตะวันออกเฉียงเหนือ',
       releaseDate: CURRENT_RELEASE_DATE,
       appVersion: CURRENT_APP_VERSION,
       creatorPhoto: CREATOR_PHOTO_BASE64
@@ -9803,7 +9803,7 @@
         const stored = localStorage.getItem('pea_app_metadata');
         if (stored) {
           const parsed = JSON.parse(stored);
-          if (!parsed.creatorName || /[\u0080-\u00FF]/.test(parsed.creatorName) || parsed.creatorName.includes('เน€เธ') || parsed.creatorName.includes('เธเธ')) {
+          if (!parsed.creatorName || /[-ÿ]/.test(parsed.creatorName) || parsed.creatorName.includes('เธ') || parsed.creatorName.includes('จซ')) {
             localStorage.removeItem('pea_app_metadata');
             return { ...DEFAULT_APP_META };
           }
@@ -9824,23 +9824,23 @@
     function renderAppMetadata() {
       const meta = getAppMetadata();
       if ($('creatorCardName')) $('creatorCardName').textContent = meta.creatorName || DEFAULT_APP_META.creatorName;
-      if ($('creatorCardEmpId')) $('creatorCardEmpId').textContent = meta.creatorEmpId ? ('เธฃเธซเธฑเธช ' + meta.creatorEmpId) : 'เธฃเธซเธฑเธช 504195';
+      if ($('creatorCardEmpId')) $('creatorCardEmpId').textContent = meta.creatorEmpId ? ('รหัส ' + meta.creatorEmpId) : 'รหัส 504195';
       if ($('creatorCardPosition')) $('creatorCardPosition').textContent = meta.creatorPosition || DEFAULT_APP_META.creatorPosition;
       if ($('creatorCardAffilShort')) $('creatorCardAffilShort').textContent = meta.creatorAffiliationShort || DEFAULT_APP_META.creatorAffiliationShort;
       
       if ($('creatorCardAffilFull')) {
         const lines = (meta.creatorAffiliationFull || DEFAULT_APP_META.creatorAffiliationFull).split('\n').filter(l => l.trim().length > 0);
-        const listItems = lines.map(l => '<li>' + l.replace(/^[\sโ€ข\-\*]+/, '') + '</li>').join('');
-        $('creatorCardAffilFull').innerHTML = '<b style="color:var(--pea-purple-light);">๐ข เธชเธฑเธเธเธฑเธ”เน€เธ•เนเธก:</b><ul style="margin:4px 0 0 18px; padding:0; list-style-type:disc; line-height:1.5;">' + listItems + '</ul>';
+        const listItems = lines.map(l => '<li>' + l.replace(/^[\s•\-\*]+/, '') + '</li>').join('');
+        $('creatorCardAffilFull').innerHTML = '<b style="color:var(--pea-purple-light);">🏢 สังกัดเต็ม:</b><ul style="margin:4px 0 0 18px; padding:0; list-style-type:disc; line-height:1.5;">' + listItems + '</ul>';
       }
 
-      if ($('creatorCardDate')) $('creatorCardDate').innerHTML = '๐“… <b>เธงเธฑเธเธ—เธตเนเธเธฑเธ”เธ—เธณ/เน€เธเธขเนเธเธฃเน:</b> ' + (meta.releaseDate || CURRENT_RELEASE_DATE);
-      if ($('creatorCardVersion')) $('creatorCardVersion').textContent = 'โก PEA Financial Planner ' + CURRENT_APP_VERSION;
+      if ($('creatorCardDate')) $('creatorCardDate').innerHTML = '📅 <b>วันที่จัดทำ/เผยแพร่:</b> ' + (meta.releaseDate || CURRENT_RELEASE_DATE);
+      if ($('creatorCardVersion')) $('creatorCardVersion').textContent = '⚡ PEA Financial Planner ' + CURRENT_APP_VERSION;
       if ($('creatorProfileImg')) $('creatorProfileImg').src = CREATOR_PHOTO_BASE64;
     }
 
     function getThaiTodayString() {
-      const months = ['เธกเธเธฃเธฒเธเธก', 'เธเธธเธกเธ เธฒเธเธฑเธเธเน', 'เธกเธตเธเธฒเธเธก', 'เน€เธกเธฉเธฒเธขเธ', 'เธเธคเธฉเธ เธฒเธเธก', 'เธกเธดเธ–เธธเธเธฒเธขเธ', 'เธเธฃเธเธเธฒเธเธก', 'เธชเธดเธเธซเธฒเธเธก', 'เธเธฑเธเธขเธฒเธขเธ', 'เธ•เธธเธฅเธฒเธเธก', 'เธเธคเธจเธเธดเธเธฒเธขเธ', 'เธเธฑเธเธงเธฒเธเธก'];
+      const months = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
       const now = new Date();
       const day = now.getDate();
       const month = months[now.getMonth()];
@@ -9892,24 +9892,24 @@
 
       renderAppMetadata();
       closeMetaModal();
-      showToast('๐’พ เธเธฑเธเธ—เธถเธเธเนเธญเธกเธนเธฅเธเธนเนเธเธฑเธ”เธ—เธณ เธงเธฑเธเธ—เธตเนเน€เธเธขเนเธเธฃเน & Version เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง!');
+      showToast('💾 บันทึกข้อมูลผู้จัดทำ วันที่เผยแพร่ & Version เรียบร้อยแล้ว!');
     }
 
     function resetAppMetadata() {
-      if (!confirm('เธ•เนเธญเธเธเธฒเธฃเธเธทเธเธเนเธฒเธเนเธญเธกเธนเธฅเธเธนเนเธเธฑเธ”เธ—เธณเนเธฅเธฐเน€เธงเธญเธฃเนเธเธฑเธเน€เธเนเธเธเนเธฒเน€เธฃเธดเนเธกเธ•เนเธเธเธญเธเนเธเธฃเนเธเธฃเธกเธซเธฃเธทเธญเนเธกเน?')) return;
+      if (!confirm('ต้องการคืนค่าข้อมูลผู้จัดทำและเวอร์ชันเป็นค่าเริ่มต้นของโปรแกรมหรือไม่?')) return;
       try {
         localStorage.removeItem('pea_app_metadata');
       } catch (e) {}
       renderAppMetadata();
       openMetaModal();
-      showToast('๐” เธเธทเธเธเนเธฒเธเนเธญเธกเธนเธฅเน€เธฃเธดเนเธกเธ•เนเธเน€เธฃเธตเธขเธเธฃเนเธญเธข');
+      showToast('🔄 คืนค่าข้อมูลเริ่มต้นเรียบร้อย');
     }
 
     // ==================== USER PROFILE (DEFAULT BLANK / DASH) ====================
     function cleanProfileStr(s) {
       if (!s || typeof s !== 'string') return '';
       const trimmed = s.trim();
-      if (trimmed.length === 0 || trimmed === '-' || trimmed === 'เธเธ' || trimmed.includes('เน€เธ') || trimmed.includes('เธเธ') || /[\u0080-\u00FF]/.test(trimmed)) return '';
+      if (trimmed.length === 0 || trimmed === '-' || trimmed === 'จซ' || trimmed.length < 3 || trimmed.includes('เธ') || trimmed.includes('จซ') || /[-ÿ]/.test(trimmed)) return '';
       return trimmed;
     }
 
@@ -9917,9 +9917,9 @@
       // Auto-sanitize legacy creator/corrupted data from user profile if present
       if (state && state.user_profile) {
         const pName = state.user_profile.name;
-        if (pName === 'เธเธฒเธขเธญเธ เธดเธเธฒเธ•เธด เธขเธธเธเธดเธ' || pName === 'เธเธ' || state.user_profile.emp_id === '504195' || (typeof pName === 'string' && (pName.includes('เน€เธ') || pName.includes('เธเธ')))) {
+        if (typeof pName !== 'string' || pName === 'นายอภิชาติ ยุพิน' || pName === 'จซ' || pName.length < 3 || state.user_profile.emp_id === '504195' || (typeof pName === 'string' && (pName.includes('เธ') || pName.includes('จซ') || /[-ÿ]/.test(pName)))) {
           state.user_profile = { name: '', emp_id: '', position: '', department: '', bio: '', avatar: '' };
-          try { localStorage.setItem('pea_fin_state', JSON.stringify(state)); } catch(e){}
+          try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
         }
       }
 
@@ -9933,12 +9933,12 @@
       // Header UI
       if ($('headerUserAvatar')) $('headerUserAvatar').src = avSrc;
       if ($('headerUserName')) $('headerUserName').textContent = name || '-';
-      if ($('headerUserTitle')) $('headerUserTitle').textContent = empId ? ('เธฃเธซเธฑเธช ' + empId) : (pos || '-');
+      if ($('headerUserTitle')) $('headerUserTitle').textContent = empId ? ('รหัส ' + empId) : (pos || '-');
 
       // Dashboard Top Banner UI (Tab 1)
       if ($('dashUserAvatar')) $('dashUserAvatar').src = avSrc;
       if ($('dashUserName')) $('dashUserName').textContent = name || '-';
-      if ($('dashUserEmpId')) $('dashUserEmpId').textContent = empId ? ('เธฃเธซเธฑเธช ' + empId) : '-';
+      if ($('dashUserEmpId')) $('dashUserEmpId').textContent = empId ? ('รหัส ' + empId) : '-';
       if ($('dashUserPosition')) $('dashUserPosition').textContent = pos || '-';
       if ($('dashUserDept')) $('dashUserDept').textContent = dept || '';
 
@@ -9946,7 +9946,7 @@
       if ($('tab5UserAvatar')) $('tab5UserAvatar').src = avSrc;
       if ($('tab5UserName')) $('tab5UserName').textContent = name || '-';
       if ($('tab5UserPosition')) $('tab5UserPosition').textContent = pos || '-';
-      if ($('tab5UserEmpId')) $('tab5UserEmpId').textContent = empId ? ('เธฃเธซเธฑเธชเธเธฃเธฐเธเธณเธ•เธฑเธง: ' + empId) : '-';
+      if ($('tab5UserEmpId')) $('tab5UserEmpId').textContent = empId ? ('รหัสประจำตัว: ' + empId) : '-';
 
       // Tab 6 Creator Card Photo (Always official 400x400 creator photo)
       if ($('creatorProfileImg')) $('creatorProfileImg').src = CREATOR_PHOTO_BASE64;
@@ -10018,7 +10018,7 @@
           const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.85);
           tempProfileAvatar = compressedDataUrl;
           if ($('modalAvatarPreview')) $('modalAvatarPreview').src = compressedDataUrl;
-          showToast('๐“ธ เธญเธฑเธเนเธซเธฅเธ”เธฃเธนเธเธ เธฒเธเธ•เธฑเธงเธญเธขเนเธฒเธเนเธฅเนเธง เธเธ” "เธเธฑเธเธ—เธถเธ" เน€เธเธทเนเธญเธขเธทเธเธขเธฑเธ');
+          showToast('📸 อัปโหลดรูปภาพตัวอย่างแล้ว กด "บันทึก" เพื่อยืนยัน');
         };
         img.src = e.target.result;
       };
@@ -10039,7 +10039,7 @@
       renderUserProfile();
       manualSaveData();
       closeProfileModal();
-      showToast('๐’พ เธเธฑเธเธ—เธถเธเธเนเธญเธกเธนเธฅเนเธเธฃเนเธเธฅเนเธชเนเธงเธเธ•เธฑเธงเน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง!');
+      showToast('💾 บันทึกข้อมูลโปรไฟล์ส่วนตัวเรียบร้อยแล้ว!');
     }
   </script>
 </body>
