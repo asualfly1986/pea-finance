@@ -4585,7 +4585,7 @@
             <!-- Release Date & System Version -->
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.6</span>
+              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.7</span>
             </div>
 
             <!-- Force Update & Refresh Button -->
@@ -5286,9 +5286,9 @@
     }
 
     // ==================== PWA SMART UPDATE ENGINE ====================
-    function initServiceWorker() {
+        function initServiceWorker() {
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then(reg => {
+        navigator.serviceWorker.register('sw.js?v=' + CURRENT_APP_VERSION).then(reg => {
           reg.onupdatefound = () => {
             const installingWorker = reg.installing;
             if (installingWorker) {
@@ -5310,24 +5310,24 @@
         });
       }
 
-      // Check if this page load was triggered by a force update
+      // Check if page load was triggered by force update
       if (window.location.search.includes('v=') || window.location.search.includes('t=')) {
         setTimeout(() => {
-          showToast('✅ อัปเดตเป็นเวอร์ชันล่าสุด v2.8.6 เรียบร้อยแล้ว!');
+          showToast('โ… อัปเดตเป็นเวอร์ชันล่าสุด ' + CURRENT_APP_VERSION + ' เรียบร้อยแล้ว!');
           try {
             window.history.replaceState({}, document.title, window.location.pathname);
           } catch(e) {}
-        }, 600);
+        }, 500);
       }
     }
 
     function showUpdateToastNotification() {
-      let box = $('updateNotificationBox');
+      let box = updateNotificationBox;
       if (!box) {
         box = document.createElement('div');
         box.id = 'updateNotificationBox';
         box.style.cssText = 'position:fixed; top:65px; left:50%; transform:translateX(-50%); z-index:99999; background:linear-gradient(135deg, #1E0B38, #5B21B6); color:#fff; border:1.5px solid #F59E0B; padding:10px 16px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.4); display:flex; align-items:center; gap:10px; max-width:92%; font-size:0.82rem;';
-        box.innerHTML = '<span>⚡ <b>มีเวอร์ชันใหม่พร้อมใช้งาน!</b></span><button type="button" class="btn btn-gold" style="padding:4px 10px; font-size:0.75rem; width:auto; border-radius:8px; font-weight:700;" onclick="forceAppUpdate()">🔄 อัปเดตทันที</button>';
+        box.innerHTML = '<span>โก <b>มีเวอร์ชันใหม่พร้อมใช้งาน!</b></span><button type="button" class="btn btn-gold" style="padding:4px 10px; font-size:0.75rem; width:auto; border-radius:8px; font-weight:700;" onclick="forceAppUpdate()">๐” อัปเดตทันที</button>';
         document.body.appendChild(box);
       }
     }
@@ -5341,38 +5341,45 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       } catch (e) {}
 
-      showToast('🔄 กำลังดึงเวอร์ชันล่าสุดจากเซิร์ฟเวอร์...');
+      showToast('๐” กำลังล้างแคชและโหลดเวอร์ชันใหม่ล่าสุด...');
 
-      // 2. Unregister SW and purge caches
+      // 2. Unregister ALL Service Workers and Purge ALL Cache Storage
       try {
         if ('serviceWorker' in navigator) {
           const regs = await navigator.serviceWorker.getRegistrations();
           for (const r of regs) {
-            if (r.waiting) r.waiting.postMessage({ action: 'skipWaiting' });
-            await r.update().catch(() => {});
-            await r.unregister().catch(() => {});
+            try {
+              if (r.active) r.active.postMessage({ action: 'clearCache' });
+              if (r.waiting) r.waiting.postMessage({ action: 'skipWaiting' });
+              await r.unregister();
+            } catch(err) {}
           }
         }
+      } catch (err) {}
+
+      try {
         if ('caches' in window) {
           const keys = await caches.keys();
-          for (const k of keys) {
-            await caches.delete(k);
-          }
+          await Promise.all(keys.map(k => caches.delete(k)));
         }
-      } catch (err) {
-        console.warn('Update error:', err);
-      }
+      } catch (err) {}
 
-      // 3. Bust HTTP cache with fresh fetch
-      const updateUrl = window.location.origin + window.location.pathname + '?v=' + Date.now();
+      // 3. Clear session storage (keep localStorage financial data safe)
       try {
-        await fetch(updateUrl, { cache: 'reload', mode: 'no-cors' }).catch(() => {});
+        sessionStorage.clear();
+      } catch(e) {}
+
+      // 4. Bust CDN/HTTP cache with fresh fetch and hard reload
+      const bustTimestamp = Date.now();
+      const targetUrl = window.location.pathname + '?t=' + bustTimestamp;
+
+      try {
+        await fetch(targetUrl, { cache: 'reload', mode: 'no-cors' }).catch(() => {});
       } catch (e) {}
 
-      // 4. Reload page to newest code
       setTimeout(() => {
-        window.location.replace(updateUrl);
-      }, 350);
+        window.location.href = targetUrl;
+      }, 400);
     }
 
     // Tab Navigation
@@ -9196,7 +9203,7 @@
     let tempProfileAvatar = null;
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v2.8.6';
+    const CURRENT_APP_VERSION = 'v2.8.7';
     const CURRENT_RELEASE_DATE = '24 เธชเธดเธเธซเธฒเธเธก 2569';
 
     const DEFAULT_APP_META = {
@@ -9278,7 +9285,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.6';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.7';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -9297,7 +9304,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.8.6'
+      appVersion: 'v2.8.7'
       };
 
       try {
