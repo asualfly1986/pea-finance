@@ -5505,10 +5505,10 @@
           type: 'bar',
           data: {
             labels: [
-              '\u0E01\u0E2a\u0E0A. \u0E01\u0E1F\u0E20.',
-              '\u0E2a\u0E2B\u0E01\u0E23\u0E13\u0E4C \u0E01\u0E1F\u0E20.',
-              '\u0E0A\u0E14\u0E40\u0E0A\u0E22 400 \u0E27\u0E31\u0E19',
-              '\u0E40\u0E07\u0E34\u0E19\u0E2D\u0E2D\u0E21\u0E40\u0E2a\u0E23\u0E34\u0E21'
+              ['\u0E01\u0E2a\u0E0A.', '\u0E01\u0E1F\u0E20.'],
+              ['\u0E2a\u0E2B\u0E01\u0E23\u0E13\u0E4C', '\u0E01\u0E1F\u0E20.'],
+              ['\u0E0A\u0E14\u0E40\u0E0A\u0E22', '400 \u0E27\u0E31\u0E19'],
+              ['\u0E40\u0E07\u0E34\u0E19\u0E2D\u0E2D\u0E21', '\u0E40\u0E2a\u0E23\u0E34\u0E21']
             ],
             datasets: [{
               label: '\u0E21\u0E39\u0E25\u0E04\u0E48\u0E32\u0E1B\u0E23\u0E30\u0E21\u0E32\u0E13\u0E01\u0E32\u0E23 \u0E13 \u0E27\u0E31\u0E19\u0E40\u0E01\u0E29\u0E35\u0E22\u0E13 (\u0E1A\u0E32\u0E17)',
@@ -5521,7 +5521,7 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            layout: { padding: { top: 10, bottom: 40, left: 10, right: 10 } },
+            layout: { padding: { top: 10, bottom: 20, left: 10, right: 10 } },
             plugins: {
               legend: { display: false },
               tooltip: {
@@ -5536,8 +5536,8 @@
                 ticks: {
                   color: theme.textColor,
                   font: { size: 11, weight: '600' },
-                  maxRotation: 40,
-                  minRotation: 20,
+                  maxRotation: 0,
+                  minRotation: 0,
                   padding: 8,
                   autoSkip: false
                 }
@@ -5712,7 +5712,18 @@
               }
             },
             scales: {
-              x: { grid: { color: theme.gridColor } },
+              x: {
+                grid: { color: theme.gridColor },
+                ticks: {
+                  color: theme.mutedColor,
+                  font: { size: 10, weight: '600' },
+                  maxRotation: 0,
+                  minRotation: 0,
+                  autoSkip: true,
+                  maxTicksLimit: 6,
+                  padding: 6
+                }
+              },
               y: {
                 grid: { color: theme.gridColor },
                 ticks: { callback: v => (v >= 1000 ? (v/1000).toFixed(0) + 'k' : fmt(v)) }
@@ -6225,7 +6236,18 @@
               }
             },
             scales: {
-              x: { grid: { color: theme.gridColor } },
+              x: {
+                grid: { color: theme.gridColor },
+                ticks: {
+                  color: theme.mutedColor,
+                  font: { size: 10, weight: '600' },
+                  maxRotation: 0,
+                  minRotation: 0,
+                  autoSkip: true,
+                  maxTicksLimit: 7,
+                  padding: 6
+                }
+              },
               y: {
                 grid: { color: theme.gridColor },
                 ticks: { callback: v => (v >= 1000000 ? (v/1000000).toFixed(1) + 'M' : fmt(v)) }
