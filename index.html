@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -1722,16 +1722,7 @@
 
       
 
-      <!-- Action Buttons Row -->
-      <div class="header-actions">
-        <button type="button" class="btn btn-purple header-btn" onclick="manualSaveData()" title="&#xE1A;&#xE31;&#xE19;&#xE17;&#xE36;&#xE01;&#xE02;&#xE49;&#xE2D;&#xE21;&#xE39;&#xE25;&#xE25;&#xE07;&#xE40;&#xE1A;&#xE23;&#xE32;&#xE27;&#xE4C;&#xE40;&#xE0B;&#xE2D;&#xE23;&#xE4C;">
-          <span>&#x1F4BE; &#xE40;&#xE0B;&#xE1F;</span>
-        </button>
-        <div class="save-status">
-          <span class="save-dot synced" id="saveDot"></span>
-          <span id="saveStatusText">&#xE1E;&#xE23;&#xE49;&#xE2D;&#xE21;</span>
-        </div>
-      </div>
+      
     </div>
   </header>
 
@@ -4472,7 +4463,7 @@
             <!-- Release Date & System Version -->
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.0</span>
+              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.1</span>
             </div>
 
             <!-- Force Update & Refresh Button -->
@@ -8894,7 +8885,7 @@
       creatorAffiliationShort: 'ผปบ./กฟส.ขก.2/กฟจ.ขก./กฟฉ.1/สายงาน (ฉ)',
       creatorAffiliationFull: 'แผนกปฏิบัติการและบำรุงรักษาระบบไฟฟ้า\nการไฟฟ้าส่วนภูมิภาคสาขาเมืองขอนแก่น 2\nการไฟฟ้าส่วนภูมิภาคจังหวัดขอนแก่น\nการไฟฟ้าส่วนภูมิภาค เขต 1 (ภาคตะวันออกเฉียงเหนือ) จังหวัดอุดรธานี\nสายงานภาคตะวันออกเฉียงเหนือ',
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.8.0'
+      appVersion: 'v2.8.1'
     };
 
     function getAppMetadata() {
@@ -8961,7 +8952,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.0';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.1';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -8980,7 +8971,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.8.0'
+      appVersion: 'v2.8.1'
       };
 
       try {
