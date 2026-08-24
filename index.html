@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -5163,11 +5163,94 @@
       $('themeIcon').textContent = next === 'dark' ? '☀️' : '🌙';
     }
 
-    // PWA Service Worker Registration
+    // ==================== PWA SMART UPDATE ENGINE ====================
     function initServiceWorker() {
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration error:', err));
+        navigator.serviceWorker.register('sw.js').then(reg => {
+          reg.onupdatefound = () => {
+            const installingWorker = reg.installing;
+            if (installingWorker) {
+              installingWorker.onstatechange = () => {
+                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  showUpdateToastNotification();
+                }
+              };
+            }
+          };
+        }).catch(err => console.log('SW registration error:', err));
+
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
       }
+
+      // Check if this page load was triggered by a force update
+      if (window.location.search.includes('v=') || window.location.search.includes('t=')) {
+        setTimeout(() => {
+          showToast('✅ อัปเดตเป็นเวอร์ชันล่าสุด v2.8.2 เรียบร้อยแล้ว!');
+          try {
+            window.history.replaceState({}, document.title, window.location.pathname);
+          } catch(e) {}
+        }, 600);
+      }
+    }
+
+    function showUpdateToastNotification() {
+      let box = $('updateNotificationBox');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'updateNotificationBox';
+        box.style.cssText = 'position:fixed; top:65px; left:50%; transform:translateX(-50%); z-index:99999; background:linear-gradient(135deg, #1E0B38, #5B21B6); color:#fff; border:1.5px solid #F59E0B; padding:10px 16px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.4); display:flex; align-items:center; gap:10px; max-width:92%; font-size:0.82rem;';
+        box.innerHTML = '<span>⚡ <b>มีเวอร์ชันใหม่พร้อมใช้งาน!</b></span><button type="button" class="btn btn-gold" style="padding:4px 10px; font-size:0.75rem; width:auto; border-radius:8px; font-weight:700;" onclick="forceAppUpdate()">🔄 อัปเดตทันที</button>';
+        document.body.appendChild(box);
+      }
+    }
+
+    async function forceAppUpdate() {
+      // 1. Save data immediately
+      try {
+        collectInputs();
+        const timeNow = formatThaiDateTime(new Date());
+        state.last_saved_time = timeNow;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {}
+
+      showToast('🔄 กำลังดึงเวอร์ชันล่าสุดจากเซิร์ฟเวอร์...');
+
+      // 2. Unregister SW and purge caches
+      try {
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          for (const r of regs) {
+            if (r.waiting) r.waiting.postMessage({ action: 'skipWaiting' });
+            await r.update().catch(() => {});
+            await r.unregister().catch(() => {});
+          }
+        }
+        if ('caches' in window) {
+          const keys = await caches.keys();
+          for (const k of keys) {
+            await caches.delete(k);
+          }
+        }
+      } catch (err) {
+        console.warn('Update error:', err);
+      }
+
+      // 3. Bust HTTP cache with fresh fetch
+      const updateUrl = window.location.origin + window.location.pathname + '?v=' + Date.now();
+      try {
+        await fetch(updateUrl, { cache: 'reload', mode: 'no-cors' }).catch(() => {});
+      } catch (e) {}
+
+      // 4. Reload page to newest code
+      setTimeout(() => {
+        window.location.replace(updateUrl);
+      }, 350);
     }
 
     // Tab Navigation
