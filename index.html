@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -4585,7 +4585,7 @@
             <!-- Release Date & System Version -->
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.7</span>
+              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.8</span>
             </div>
 
             <!-- Force Update & Refresh Button -->
@@ -5552,47 +5552,47 @@
       const solvencyPct = totalAssets > 0 ? ((netWorth / totalAssets) * 100) : 100;
       const investmentRatioPct = netWorth > 0 ? (((pfAcc + coopShares + invAssets) / netWorth) * 100) : 0;
 
-      if (cpaEmergencyRatio) {
-        cpaEmergencyRatio.textContent = emergencyMonths.toFixed(1) + ' เดือน';
-        cpaEmergencyRatio.style.color = emergencyMonths >= 6 ? '#10B981' : (emergencyMonths >= 3 ? '#F59E0B' : '#EF4444');
+      if ($('cpaEmergencyRatio')) {
+        $('cpaEmergencyRatio').textContent = emergencyMonths.toFixed(1) + ' เดือน';
+        $('cpaEmergencyRatio').style.color = emergencyMonths >= 6 ? '#10B981' : (emergencyMonths >= 3 ? '#F59E0B' : '#EF4444');
       }
-      if (cpaEmergencyBadge) {
-        cpaEmergencyBadge.textContent = emergencyMonths >= 6 ? 'ยอดเยี่ยม (≥ 6 ด.)' : (emergencyMonths >= 3 ? 'พอใช้ (3-6 ด.)' : 'ควรเพิ่ม (< 3 ด.)');
-        cpaEmergencyBadge.className = emergencyMonths >= 6 ? 'badge badge-green' : (emergencyMonths >= 3 ? 'badge badge-gold' : 'badge badge-danger');
-      }
-
-      if (cpaDebtToAssetRatio) {
-        cpaDebtToAssetRatio.textContent = fmt2(debtToAssetPct) + '%';
-        cpaDebtToAssetRatio.style.color = debtToAssetPct <= 35 ? '#10B981' : (debtToAssetPct <= 50 ? '#F59E0B' : '#EF4444');
-      }
-      if (cpaDebtToAssetBadge) {
-        cpaDebtToAssetBadge.textContent = debtToAssetPct <= 35 ? 'ปลอดภัยสูง (≤ 35%)' : (debtToAssetPct <= 50 ? 'เกณฑ์ปลอดภัย (≤ 50%)' : 'ภาระหนี้สูง (> 50%)');
-        cpaDebtToAssetBadge.className = debtToAssetPct <= 50 ? 'badge badge-green' : 'badge badge-danger';
+      if ($('cpaEmergencyBadge')) {
+        $('cpaEmergencyBadge').textContent = emergencyMonths >= 6 ? 'ยอดเยี่ยม (≥ 6 ด.)' : (emergencyMonths >= 3 ? 'พอใช้ (3-6 ด.)' : 'ควรเพิ่ม (< 3 ด.)');
+        $('cpaEmergencyBadge').className = emergencyMonths >= 6 ? 'badge badge-green' : (emergencyMonths >= 3 ? 'badge badge-gold' : 'badge badge-danger');
       }
 
-      if (cpaSolvencyRatio) {
-        cpaSolvencyRatio.textContent = fmt2(solvencyPct) + '%';
-        cpaSolvencyRatio.style.color = solvencyPct >= 70 ? '#10B981' : (solvencyPct >= 50 ? 'var(--pea-purple-light)' : '#EF4444');
+      if ($('cpaDebtToAssetRatio')) {
+        $('cpaDebtToAssetRatio').textContent = fmt2(debtToAssetPct) + '%';
+        $('cpaDebtToAssetRatio').style.color = debtToAssetPct <= 35 ? '#10B981' : (debtToAssetPct <= 50 ? '#F59E0B' : '#EF4444');
       }
-      if (cpaSolvencyBadge) {
-        cpaSolvencyBadge.textContent = solvencyPct >= 70 ? 'อิสรภาพสูง (≥ 70%)' : (solvencyPct >= 50 ? 'ดีเยี่ยม (≥ 50%)' : 'ควรเร่งปลดหนี้');
-        cpaSolvencyBadge.className = solvencyPct >= 50 ? 'badge badge-purple' : 'badge badge-gold';
+      if ($('cpaDebtToAssetBadge')) {
+        $('cpaDebtToAssetBadge').textContent = debtToAssetPct <= 35 ? 'ปลอดภัยสูง (≤ 35%)' : (debtToAssetPct <= 50 ? 'เกณฑ์ปลอดภัย (≤ 50%)' : 'ภาระหนี้สูง (> 50%)');
+        $('cpaDebtToAssetBadge').className = debtToAssetPct <= 50 ? 'badge badge-green' : 'badge badge-danger';
       }
 
-      if (cpaInvestRatio) {
-        cpaInvestRatio.textContent = fmt2(investmentRatioPct) + '%';
-        cpaInvestRatio.style.color = investmentRatioPct >= 50 ? '#10B981' : '#F59E0B';
+      if ($('cpaSolvencyRatio')) {
+        $('cpaSolvencyRatio').textContent = fmt2(solvencyPct) + '%';
+        $('cpaSolvencyRatio').style.color = solvencyPct >= 70 ? '#10B981' : (solvencyPct >= 50 ? 'var(--pea-purple-light)' : '#EF4444');
       }
-      if (cpaInvestBadge) {
-        cpaInvestBadge.textContent = investmentRatioPct >= 50 ? 'เงินทำงานดีเยี่ยม (≥ 50%)' : 'ควรเพิ่ม กสช./สหกรณ์';
-        cpaInvestBadge.className = investmentRatioPct >= 50 ? 'badge badge-green' : 'badge badge-gold';
+      if ($('cpaSolvencyBadge')) {
+        $('cpaSolvencyBadge').textContent = solvencyPct >= 70 ? 'อิสรภาพสูง (≥ 70%)' : (solvencyPct >= 50 ? 'ดีเยี่ยม (≥ 50%)' : 'ควรเร่งปลดหนี้');
+        $('cpaSolvencyBadge').className = solvencyPct >= 50 ? 'badge badge-purple' : 'badge badge-gold';
+      }
+
+      if ($('cpaInvestRatio')) {
+        $('cpaInvestRatio').textContent = fmt2(investmentRatioPct) + '%';
+        $('cpaInvestRatio').style.color = investmentRatioPct >= 50 ? '#10B981' : '#F59E0B';
+      }
+      if ($('cpaInvestBadge')) {
+        $('cpaInvestBadge').textContent = investmentRatioPct >= 50 ? 'เงินทำงานดีเยี่ยม (≥ 50%)' : 'ควรเพิ่ม กสช./สหกรณ์';
+        $('cpaInvestBadge').className = investmentRatioPct >= 50 ? 'badge badge-green' : 'badge badge-gold';
       }
 
       // ==================== 2. ECONOMIST & CFP DEEP INSIGHTS ====================
       const curAgeForEcon = num('pea_currentAge') || 35;
       const retAgeForEcon = num('pea_retireAge') || 60;
       const curSalForEcon = num('pea_salary') || 38200;
-      const gRateForEcon = (parseFloat(pea_salaryGrowthRate ? pea_salaryGrowthRate.value : '4.5') || 4.5) / 100;
+      const gRateForEcon = (parseFloat($('pea_salaryGrowthRate') ? $('pea_salaryGrowthRate').value : '4.5') || 4.5) / 100;
       const yearsToRetireForEcon = Math.max(0, retAgeForEcon - curAgeForEcon);
 
       const finalSalaryForEcon = Math.round(curSalForEcon * Math.pow(1 + gRateForEcon, yearsToRetireForEcon));
@@ -5619,22 +5619,22 @@
       const totalPassiveAnnual = coopDivAnnual + pfYieldAnnual;
       const totalPassiveMonthly = Math.round(totalPassiveAnnual / 12);
 
-      if (econRealWealthVal) econRealWealthVal.textContent = fmt(realWealthVal) + ' ฿';
-      if (econRealWealthDesc) econRealWealthDesc.textContent = เงินก้อน  ฿ ในอีก  ปี จะมีอำนาจซื้อเทียบเท่าเงินวันนี้;
-      if (econIrrBadge) {
-        econIrrBadge.textContent = ${fmt2(irrPct)}% (เป้าหมาย 50-70%);
-        econIrrBadge.className = irrPct >= 50 ? 'badge badge-green num-font' : 'badge badge-gold num-font';
+      if ($('econRealWealthVal')) $('econRealWealthVal').textContent = fmt(realWealthVal) + ' ฿';
+      if ($('econRealWealthDesc')) $('econRealWealthDesc').textContent = 'เงินก้อน ' + fmt(totalLumpSumForEcon) + ' ฿ ในอีก ' + yearsToRetireForEcon + ' ปี จะมีอำนาจซื้อเทียบเท่าเงินวันนี้';
+      if ($('econIrrBadge')) {
+        $('econIrrBadge').textContent = fmt2(irrPct) + '% (เป้าหมาย 50-70%)';
+        $('econIrrBadge').className = irrPct >= 50 ? 'badge badge-green num-font' : 'badge badge-gold num-font';
       }
 
-      if (cfpSwrMonthly) cfpSwrMonthly.textContent = fmt(safeMonthlyWithdrawal) + ' ฿/ด.';
-      if (cfpSwrAnnualDesc) cfpSwrAnnualDesc.textContent = คิดเป็นงบประมาณถอนใช้ปีละ  ฿ (กฎ 4% SWR);
-      if (cfpSwrStatus) {
-        cfpSwrStatus.textContent = totalLumpSumForEcon > 3000000 ? '🔒 เงินต้นคงกระพันตลอดชีพ' : '⚠️ แนะนำเพิ่มเงินออมเสริม';
-        cfpSwrStatus.className = totalLumpSumForEcon > 3000000 ? 'badge badge-green' : 'badge badge-gold';
+      if ($('cfpSwrMonthly')) $('cfpSwrMonthly').textContent = fmt(safeMonthlyWithdrawal) + ' ฿/ด.';
+      if ($('cfpSwrAnnualDesc')) $('cfpSwrAnnualDesc').textContent = 'คิดเป็นงบประมาณถอนใช้ปีละ ' + fmt(safeAnnualWithdrawal) + ' ฿ (กฎ 4% SWR)';
+      if ($('cfpSwrStatus')) {
+        $('cfpSwrStatus').textContent = totalLumpSumForEcon > 3000000 ? '🔒 เงินต้นคงกระพันตลอดชีพ' : '⚠️ แนะนำเพิ่มเงินออมเสริม';
+        $('cfpSwrStatus').className = totalLumpSumForEcon > 3000000 ? 'badge badge-green' : 'badge badge-gold';
       }
 
-      if (cfpCoopDivAnnual) cfpCoopDivAnnual.textContent = fmt(coopDivAnnual) + ' ฿/ปี';
-      if (cfpPassiveMonthly) cfpPassiveMonthly.textContent = fmt(totalPassiveMonthly) + ' ฿/ด.';
+      if ($('cfpCoopDivAnnual')) $('cfpCoopDivAnnual').textContent = fmt(coopDivAnnual) + ' ฿/ปี';
+      if ($('cfpPassiveMonthly')) $('cfpPassiveMonthly').textContent = fmt(totalPassiveMonthly) + ' ฿/ด.';
 
       // -------------------------------------------------------------
       // Chart 1: Cashflow Breakdown (Doughnut)
@@ -9203,7 +9203,7 @@
     let tempProfileAvatar = null;
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v2.8.7';
+    const CURRENT_APP_VERSION = 'v2.8.8';
     const CURRENT_RELEASE_DATE = '24 เธชเธดเธเธซเธฒเธเธก 2569';
 
     const DEFAULT_APP_META = {
@@ -9285,7 +9285,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.7';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.8';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -9304,7 +9304,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.8.7'
+      appVersion: 'v2.8.8'
       };
 
       try {
