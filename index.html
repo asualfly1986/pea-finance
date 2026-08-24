@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.10) ==================== */
+    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.11) ==================== */
     /* 1. PEA Royal Purple & Gold (Default) */
     :root, [data-palette="pea-purple"] {
       --pea-dark: #1E0B38;
@@ -4508,7 +4508,7 @@
         </div>
       </div>
 
-            <!-- Theme & Color Customization Palette Card (เนเธซเธกเน v3.0.10) -->
+            <!-- Theme & Color Customization Palette Card (เนเธซเธกเน v3.0.11) -->
       <div class="card" style="border:1.5px solid var(--pea-purple-soft); background:linear-gradient(135deg, var(--card-bg), var(--pea-purple-bg)); margin-bottom:14px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:6px;">
           <div style="display:flex; align-items:center; gap:8px;">
@@ -4573,6 +4573,53 @@
           </button>
         </div>
       </div>
+
+      <!-- ==================== 2. USER GUIDE & LEARNING CENTER CARD (COLLAPSIBLE) ==================== -->
+      <div class="card" id="userGuideCardContainer" style="border-radius:16px; border:1.5px solid var(--pea-purple-soft); background:linear-gradient(135deg, var(--card-bg), var(--pea-purple-bg)); position:relative; overflow:hidden;">
+        <!-- Header (Click to toggle) -->
+        <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; padding:4px 0;" onclick="toggleUserGuideCard()" title="กดเพื่อพับ/ขยายศูนย์การเรียนรู้">
+          <div style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span style="font-size:1.25rem;">📚</span>
+            <div>
+              <b style="font-size:0.96rem; color:var(--text-main);">ศูนย์การเรียนรู้ &amp; คู่มือการใช้งาน (User Manual)</b>
+            </div>
+            <span class="badge badge-purple" style="font-size:0.68rem; font-weight:700;">Complete Guide</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="font-size:0.72rem; color:var(--text-muted);">พับ/ขยาย</span>
+            <span id="userGuideCardArrow" style="display:inline-block; font-size:0.85rem; color:var(--pea-purple-light); font-weight:800; transition:transform 0.25s ease;">&#9660;</span>
+          </div>
+        </div>
+
+        <!-- Collapsible Body -->
+        <div id="userGuideCardBody" style="display:block; margin-top:12px; transition:all 0.3s ease;">
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:12px;">
+            คำอธิบายฟังก์ชัน การคำนวณเกษียณ กสช. 400 วัน และแดชบอร์ด CPA พร้อมภาพขั้นตอน
+          </div>
+
+          <!-- Feature Highlights Grid -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(95px, 1fr)); gap:8px; margin-bottom:14px;">
+            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('cashflow')">
+              <div style="font-size:1.15rem; margin-bottom:2px;">💵</div>
+              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">1. กระแสเงินสด</div>
+              <div style="font-size:0.65rem; color:var(--text-muted);">รายรับ-จ่าย &amp; DSR</div>
+            </div>
+            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('networth')">
+              <div style="font-size:1.15rem; margin-bottom:2px;">🏛️</div>
+              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">2. งบดุล &amp; สินทรัพย์</div>
+              <div style="font-size:0.65rem; color:var(--text-muted);">สหกรณ์ &amp; หนี้สิน</div>
+            </div>
+            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('retirement')">
+              <div style="font-size:1.15rem; margin-bottom:2px;">⚡</div>
+              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">3. เกษียณ 400 วัน</div>
+              <div style="font-size:0.65rem; color:var(--text-muted);">กสช. &amp; ชดเชย กฟภ.</div>
+            </div>
+            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('analytics')">
+              <div style="font-size:1.15rem; margin-bottom:2px;">📊</div>
+              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">4. แดชบอร์ด CPA</div>
+              <div style="font-size:0.65rem; color:var(--text-muted);">4 อัตราส่วน &amp; 4% SWR</div>
+            </div>
+          </div>
 
       <!-- QR Code Share Card (Collapsed by default) -->
       <div class="card" style="padding:0; overflow:hidden;">
@@ -4765,7 +4812,7 @@
               <!-- Release Date & System Version -->
               <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
                 <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 25 สิงหาคม 2569</span>
-                <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v3.0.10</span>
+                <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v3.0.11</span>
               </div>
 
               <!-- Force Update & Refresh Button -->
@@ -4777,52 +4824,7 @@
         </div>
       </div>
 
-      <!-- ==================== 2. USER GUIDE & LEARNING CENTER CARD (COLLAPSIBLE) ==================== -->
-      <div class="card" id="userGuideCardContainer" style="border-radius:16px; border:1.5px solid var(--pea-purple-soft); background:linear-gradient(135deg, var(--card-bg), var(--pea-purple-bg)); position:relative; overflow:hidden;">
-        <!-- Header (Click to toggle) -->
-        <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; padding:4px 0;" onclick="toggleUserGuideCard()" title="กดเพื่อพับ/ขยายศูนย์การเรียนรู้">
-          <div style="display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap;">
-            <span style="font-size:1.25rem;">📚</span>
-            <div>
-              <b style="font-size:0.96rem; color:var(--text-main);">ศูนย์การเรียนรู้ &amp; คู่มือการใช้งาน (User Manual)</b>
-            </div>
-            <span class="badge badge-purple" style="font-size:0.68rem; font-weight:700;">Complete Guide</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:6px;">
-            <span style="font-size:0.72rem; color:var(--text-muted);">พับ/ขยาย</span>
-            <span id="userGuideCardArrow" style="display:inline-block; font-size:0.85rem; color:var(--pea-purple-light); font-weight:800; transition:transform 0.25s ease;">&#9660;</span>
-          </div>
-        </div>
-
-        <!-- Collapsible Body -->
-        <div id="userGuideCardBody" style="display:block; margin-top:12px; transition:all 0.3s ease;">
-          <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:12px;">
-            คำอธิบายฟังก์ชัน การคำนวณเกษียณ กสช. 400 วัน และแดชบอร์ด CPA พร้อมภาพขั้นตอน
-          </div>
-
-          <!-- Feature Highlights Grid -->
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(95px, 1fr)); gap:8px; margin-bottom:14px;">
-            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('cashflow')">
-              <div style="font-size:1.15rem; margin-bottom:2px;">💵</div>
-              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">1. กระแสเงินสด</div>
-              <div style="font-size:0.65rem; color:var(--text-muted);">รายรับ-จ่าย &amp; DSR</div>
-            </div>
-            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('networth')">
-              <div style="font-size:1.15rem; margin-bottom:2px;">🏛️</div>
-              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">2. งบดุล &amp; สินทรัพย์</div>
-              <div style="font-size:0.65rem; color:var(--text-muted);">สหกรณ์ &amp; หนี้สิน</div>
-            </div>
-            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('retirement')">
-              <div style="font-size:1.15rem; margin-bottom:2px;">⚡</div>
-              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">3. เกษียณ 400 วัน</div>
-              <div style="font-size:0.65rem; color:var(--text-muted);">กสช. &amp; ชดเชย กฟภ.</div>
-            </div>
-            <div style="background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; cursor:pointer; transition:transform 0.15s;" onclick="openGuideChapter('analytics')">
-              <div style="font-size:1.15rem; margin-bottom:2px;">📊</div>
-              <div style="font-size:0.75rem; font-weight:700; color:var(--text-main);">4. แดชบอร์ด CPA</div>
-              <div style="font-size:0.65rem; color:var(--text-muted);">4 อัตราส่วน &amp; 4% SWR</div>
-            </div>
-          </div>
+      
 
           <!-- Action Buttons -->
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
@@ -5498,7 +5500,7 @@
     if ('caches' in window) {
       caches.keys().then(keys => {
         keys.forEach(k => {
-          if (k !== 'pea-finance-v3.0.10') {
+          if (k !== 'pea-finance-v3.0.11') {
             console.log('Purging old cache:', k);
             caches.delete(k);
           }
@@ -9794,7 +9796,7 @@
     tempProfileAvatar = null;
 
         // ==================== APP METADATA & VERSION CONFIG ====================
-                                                    // ==================== THEME & PALETTE CONTROLLER ====================
+                                                        // ==================== THEME & PALETTE CONTROLLER ====================
     const PALETTE_KEY = 'pea_finance_color_palette';
 
     function getPaletteDisplayName(p) {
@@ -9876,7 +9878,7 @@
     const DEFAULT_USER_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iIzdDM0FFRCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjRkZGRkZGIi8+PHBhdGggZD0iTTIwIDg2IEMyMCA2NiAzNSA2MiA1MCA2MiBDNjUgNjIgODAgNjYgODAgODYgWiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==';
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v3.0.10';
+    const CURRENT_APP_VERSION = 'v3.0.11';
     const CURRENT_RELEASE_DATE = '25 สิงหาคม 2569';
 
     const DEFAULT_APP_META = {
