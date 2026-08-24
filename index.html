@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -1710,7 +1710,10 @@
           </div>
         </div>
 
-        <div class="header-top-right">
+        <div class="header-top-right" style="display:flex; align-items:center; gap:6px;">
+          <button type="button" class="theme-toggle-btn" onclick="forceAppUpdate()" title="อัปเดตเวอร์ชันล่าสุด / รีเฟรช">
+            <span style="font-size:0.95rem;">🔄</span>
+          </button>
           <button type="button" class="theme-toggle-btn" onclick="toggleDarkMode()" title="สลับโหมดมืด/สว่าง">
             <span id="themeIcon">🌙</span>
           </button>
@@ -4467,10 +4470,15 @@
             </div>
 
             <!-- Release Date & System Version -->
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
               <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.0</span>
             </div>
+
+            <!-- Force Update & Refresh Button -->
+            <button type="button" class="btn btn-purple" style="width:100%; font-size:0.82rem; font-weight:700; padding:9px 14px; border-radius:10px;" onclick="forceAppUpdate()" title="ตรวจสอบและโหลดเวอร์ชันล่าสุดจากเซิร์ฟเวอร์">
+              <span>🔄 ตรวจสอบ &amp; โหลดเวอร์ชันล่าสุด (Force Update)</span>
+            </button>
             </div>
           </div>
         </div>
