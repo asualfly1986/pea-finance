@@ -4585,7 +4585,7 @@
             <!-- Release Date & System Version -->
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.9.0</span>
+              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.9.1</span>
             </div>
 
             <!-- Force Update & Refresh Button -->
@@ -4664,19 +4664,382 @@
 
   <!-- ==================== QR CODE MODAL DIALOG ====================
  -->
-    <!-- ==================== USER GUIDE MODAL DIALOG ==================== -->
+      <!-- ==================== ULTRA-DETAILED USER GUIDE MODAL DIALOG ==================== -->
   <div id="userGuideModal" class="qr-modal-overlay" style="display:none;" onclick="if(event.target===this) closeUserGuideModal()">
-    <div class="qr-modal-content" style="max-width:760px; max-height:90vh; display:flex; flex-direction:column; padding:18px;">
+    <div class="qr-modal-content" style="max-width:820px; max-height:92vh; display:flex; flex-direction:column; padding:18px; border-radius:18px; box-shadow:0 12px 40px rgba(0,0,0,0.5);">
       
       <!-- Modal Header -->
       <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1.5px solid var(--border); padding-bottom:12px; margin-bottom:12px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span style="font-size:1.3rem;">📖</span>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.4rem;">📖</span>
           <div>
-            <b style="font-size:1rem; color:var(--text-main);">คู่มือการใช้งาน PEA Financial Planner</b>
-            <div style="font-size:0.7rem; color:var(--pea-purple-light); font-weight:600;">แนวทางการวางแผนการเงิน &amp; เกษียณ กฟภ. ฉบับสมบูรณ์</div>
+            <b style="font-size:1.05rem; color:var(--text-main);">คู่มือการใช้งาน PEA Financial Planner (ฉบับละเอียดสมบูรณ์)</b>
+            <div style="font-size:0.72rem; color:var(--pea-purple-light); font-weight:600;">คู่มือวางแผนการเงิน, ขุมทรัพย์เกษียณ กสช. 400 วัน และวิเคราะห์ CPA &amp; CFP สำหรับ กฟภ.</div>
           </div>
         </div>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <button type="button" class="btn btn-gold" style="padding:6px 12px; font-size:0.75rem; font-weight:700; border-radius:8px;" onclick="exportGuidePDF()">
+            <span>📥 พิมพ์/PDF</span>
+          </button>
+          <button type="button" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--text-muted); padding:0 6px;" onclick="closeUserGuideModal()">✕</button>
+        </div>
+      </div>
+
+      <!-- Chapter Tabs -->
+      <div style="display:flex; gap:6px; overflow-x:auto; padding-bottom:8px; margin-bottom:12px; border-bottom:1px solid var(--border);" class="hide-scrollbar">
+        <button type="button" id="guideTab_intro" class="seg-btn active" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('intro', this)">📌 บทนำ</button>
+        <button type="button" id="guideTab_cashflow" class="seg-btn" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('cashflow', this)">💵 1. กระแสเงินสด &amp; DSR</button>
+        <button type="button" id="guideTab_networth" class="seg-btn" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('networth', this)">🏛️ 2. งบดุล &amp; สินทรัพย์</button>
+        <button type="button" id="guideTab_retirement" class="seg-btn" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('retirement', this)">⚡ 3. เกษียณ กสช. 400 วัน</button>
+        <button type="button" id="guideTab_analytics" class="seg-btn" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('analytics', this)">📊 4. แดชบอร์ด CPA &amp; SWR</button>
+        <button type="button" id="guideTab_pwa" class="seg-btn" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('pwa', this)">📲 5. ติดตั้ง PWA &amp; สำรอง</button>
+        <button type="button" id="guideTab_faq" class="seg-btn" style="font-size:0.75rem; font-weight:700; white-space:nowrap; padding:6px 12px;" onclick="switchGuideTab('faq', this)">❓ 6. คำถามที่พบบ่อย (FAQ)</button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div id="guideContentBody" style="overflow-y:auto; flex:1; padding-right:6px;">
+        
+        <!-- ==================== CHAPTER: INTRODUCTION ==================== -->
+        <div id="guideSec_intro" class="guide-section">
+          <div style="background:var(--pea-purple-bg); border-radius:14px; padding:16px; border:1px solid var(--pea-purple-soft); margin-bottom:14px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+              <span style="font-size:1.3rem;">🏆</span>
+              <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.1rem;">ยินดีต้อนรับสู่ PEA Financial Planner</h4>
+            </div>
+            <p style="margin:0 0 10px 0; font-size:0.84rem; line-height:1.65; color:var(--text-main);">
+              <b>PEA Financial Planner</b> คือแอปพลิเคชันทางการเงินสำหรับ <b>พนักงานการไฟฟ้าส่วนภูมิภาค (กฟภ.) ทั่วประเทศ</b> ถูกสร้างขึ้นเพื่อช่วยให้พนักงานสามารถวางแผนการเงิน ประเมินภาระหนี้สิน และคำนวณขุมทรัพย์เกษียณอายุได้อย่างแม่นยำ 100% ตามสิทธิประ\u0E4Matchersชน์และสวัสดิการของ กฟภ.
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; font-size:0.75rem;">
+              <span class="badge badge-purple">✅ ระเบียบ กสช. กฟภ. (5-15%)</span>
+              <span class="badge badge-gold">✅ เงินชดเชย 400 วัน</span>
+              <span class="badge badge-green">✅ หุ้นสหกรณ์ออมทรัพย์ กฟภ.</span>
+              <span class="badge badge-purple">✅ มาตรฐาน CPA &amp; CFP สากล</span>
+            </div>
+          </div>
+
+          <!-- Privacy & Security Alert -->
+          <div style="background:linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,182,212,0.1)); border-radius:12px; padding:12px 14px; border:1.5px solid rgba(16,185,129,0.3); margin-bottom:14px;">
+            <b style="color:#10B981; font-size:0.85rem;">🔒 ระบบความปลอดภัยข้อมูลสูงสุด (100% Client-Side Privacy):</b>
+            <p style="margin:4px 0 0 0; font-size:0.76rem; line-height:1.5; color:var(--text-main);">
+              ข้อมูลการเงิน เงินเดือน และหนี้สินทั้งหมดที่กรอก จะถูก <b>บันทึกอยู่ในหน่วยความจำของเครื่องคุณเองเท่านั้น (Local Storage)</b> ไม่มีการส่งข้อมูลออกไปยังเซิร์ฟเวอร์ภายนอก จึงมั่นใจได้ 100% ในความเป็นส่วนตัว
+            </p>
+          </div>
+
+          <!-- 6 Tabs Structure Details -->
+          <div style="background:var(--card-bg); border:1.5px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px;">
+            <b style="font-size:0.9rem; color:var(--pea-purple-light); display:block; margin-bottom:10px;">🗺️ โครงสร้าง 6 แท็บการใช้งาน:</b>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+              <div style="padding:10px; border-radius:10px; background:var(--bg-main); border:1px solid var(--border);">
+                <b style="font-size:0.82rem; color:var(--text-main); display:block; margin-bottom:2px;">⊞ Tab 1: ภาพรวม (Overview)</b>
+                <span style="font-size:0.72rem; color:var(--text-muted);">สรุปสถานะการเงินรวม, เกจวัดความพร้อมเกษียณ, และปุ่ม Quick Action</span>
+              </div>
+              <div style="padding:10px; border-radius:10px; background:var(--bg-main); border:1px solid var(--border);">
+                <b style="font-size:0.82rem; color:var(--text-main); display:block; margin-bottom:2px;">💵 Tab 2: กระแสเงินสด (Cashflow)</b>
+                <span style="font-size:0.72rem; color:var(--text-muted);">บันทึกรายรับ, รายจ่ายคงที่/ผันแปร และบัญชีหนี้สิน (DSR)</span>
+              </div>
+              <div style="padding:10px; border-radius:10px; background:var(--bg-main); border:1px solid var(--border);">
+                <b style="font-size:0.82rem; color:var(--text-main); display:block; margin-bottom:2px;">🏛️ Tab 3: งบดุล (Net Worth)</b>
+                <span style="font-size:0.72rem; color:var(--text-muted);">บันทึกสินทรัพย์สภาพคล่อง, หุ้นสหกรณ์ กฟภ., สินทรัพย์ส่วนตัว</span>
+              </div>
+              <div style="padding:10px; border-radius:10px; background:var(--bg-main); border:1px solid var(--border);">
+                <b style="font-size:0.82rem; color:var(--text-main); display:block; margin-bottom:2px;">⚡ Tab 4: แผนเกษียณ (Retirement)</b>
+                <span style="font-size:0.72rem; color:var(--text-muted);">คำนวณกองทุน กสช., เงินชดเชย 400 วัน และบำนาฉรายเดือน</span>
+              </div>
+              <div style="padding:10px; border-radius:10px; background:var(--bg-main); border:1px solid var(--border);">
+                <b style="font-size:0.82rem; color:var(--text-main); display:block; margin-bottom:2px;">📊 Tab 5: กราฟวิเคราะห์ (Analytics)</b>
+                <span style="font-size:0.72rem; color:var(--text-muted);">สุขภาพงบ CPA 4 อัตราส่วน, เงินเฟ้อ, 4% SWR &amp; Passive Income</span>
+              </div>
+              <div style="padding:10px; border-radius:10px; background:var(--bg-main); border:1px solid var(--border);">
+                <b style="font-size:0.82rem; color:var(--text-main); display:block; margin-bottom:2px;">⚙️ Tab 6: จัดการ (Management)</b>
+                <span style="font-size:0.72rem; color:var(--text-muted);">สำรองข้อมูล Backup JSON, ติดตั้ง PWA, พิมพ์รายงาน &amp; Force Update</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== CHAPTER 1: CASHFLOW & DEBT ==================== -->
+        <div id="guideSec_cashflow" class="guide-section" style="display:none;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:1.3rem;">💵</span>
+            <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.05rem;">บทที่ 1: การบริหารกระแสเงินสด &amp; ภาระหนี้สิน (DSR)</h4>
+          </div>
+
+          <!-- Step by Step Card -->
+          <div style="background:var(--card-sub); border:1.5px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px;">
+            <b style="font-size:0.88rem; color:var(--pea-purple-light); display:block; margin-bottom:10px;">📝 ขั้นตอนการกรอกข้อมูลกระแสเงินสด:</b>
+            
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:0.8rem; line-height:1.55;">
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <span style="background:var(--pea-purple); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; flex-shrink:0;">1</span>
+                <div>
+                  <b style="color:var(--text-main);">รายรับประจำ &amp; รายได้พิเศษ:</b>
+                  <div style="color:var(--text-muted);">ใส่ <b>เงินเดือนปัจจุบัน</b> (สำคัญมาก เพราะจะใช้คำนวณชดเชย 400 วัน และ กสช.), เงินประจำตำแหน่ง, ค่า OT และโบนัสเฉลี่ย/เดือน</div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <span style="background:var(--pea-purple); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; flex-shrink:0;">2</span>
+                <div>
+                  <b style="color:var(--text-main);">แยกรายจ่ายคงที่ vs รายจ่ายผันแปร:</b>
+                  <div style="color:var(--text-muted);">
+                    โ€ข <b>รายจ่ายคงที่ (Fixed):</b> ค่าที่อยู่อาศัย, ค่าน้ำ-ไฟ, เบี้ยประกัน<br>
+                    โ€ข <b>รายจ่ายผันแปร (Variable):</b> ค่าอาหาร, ช้อปปิ้ง, การเดินทางท่องเที่ยว
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <span style="background:var(--pea-purple); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700; flex-shrink:0;">3</span>
+                <div>
+                  <b style="color:var(--text-main);">การเพิ่มรายการหนี้สิน:</b>
+                  <div style="color:var(--text-muted);">กดปุ่ม <code>➕ เพิ่มหนี้สิน</code> เพื่อใส่หนี้สหกรณ์ กฟภ., สินเชื่อบ้าน, รถยนต์ โดยระบุยอดผ่อน/เดือน และยอดหนี้คงเหลือ</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formula & Evaluation Table -->
+          <div style="background:var(--card-bg); border:1.5px solid var(--border); border-radius:12px; padding:14px;">
+            <b style="font-size:0.88rem; color:var(--pea-purple-light); display:block; margin-bottom:6px;">📐 สูตรคำนวน &amp; เกณฑ์ประเมิน DSR (Debt Service Ratio):</b>
+            <div style="background:var(--bg-main); border-radius:8px; padding:8px 12px; font-family:monospace; font-size:0.8rem; margin-bottom:10px; border:1px solid var(--border);">
+              DSR (%) = ( ยอดผ่อนหนี้รวมต่อเดือน / รายได้รวมต่อเดือน ) × 100
+            </div>
+            <table style="width:100%; border-collapse:collapse; font-size:0.75rem; text-align:left;">
+              <thead>
+                <tr style="border-bottom:1.5px solid var(--border); color:var(--text-muted);">
+                  <th style="padding:6px;">ระดับ DSR</th>
+                  <th style="padding:6px;">สถานะ</th>
+                  <th style="padding:6px;">คำแนะนำทางการเงิน</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:6px; font-weight:700; color:#10B981;">≤ 35%</td>
+                  <td style="padding:6px;"><span class="badge badge-green">ปลอดภัยสูง</span></td>
+                  <td style="padding:6px; color:var(--text-muted);">สภาพคล่องดีเยี่ยม สามารถเพิ่มการออม กสช. 15% ได้เต็มที่</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:6px; font-weight:700; color:#F59E0B;">36% - 50%</td>
+                  <td style="padding:6px;"><span class="badge badge-gold">เฝ้าระวัง</span></td>
+                  <td style="padding:6px; color:var(--text-muted);">ภาระปานกลาง ควรชะลอการสร้างหนี้ใหม่</td>
+                </tr>
+                <tr>
+                  <td style="padding:6px; font-weight:700; color:#EF4444;">&gt; 50%</td>
+                  <td style="padding:6px;"><span class="badge badge-danger">ภาระสูง</span></td>
+                  <td style="padding:6px; color:var(--text-muted);">แนะนำรวมหนี้มาที่สหกรณ์ กฟภ. เพื่อลดดอกเบี้ย</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ==================== CHAPTER 2: NET WORTH & ASSETS ==================== -->
+        <div id="guideSec_networth" class="guide-section" style="display:none;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:1.3rem;">🏛️</span>
+            <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.05rem;">บทที่ 2: งบดุล &amp; ความมั่งคั่งสุทธิ (Net Worth)</h4>
+          </div>
+
+          <div style="background:var(--card-sub); border:1.5px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px;">
+            <b style="font-size:0.88rem; color:var(--pea-purple-light); display:block; margin-bottom:10px;">📝 การจัดกลุ่มสินทรัพย์ในงบดุลส่วนบุคคล:</b>
+            
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:0.8rem; line-height:1.55;">
+              <div style="padding:8px 10px; background:var(--card-bg); border-radius:8px; border:1px solid var(--border);">
+                <b style="color:#06B6D4;">💰 1. สินทรัพย์สภาพคล่อง (Liquid Assets):</b>
+                <div style="color:var(--text-muted); margin-top:2px;">เงินสด, เงินฝากออมทรัพย์, เงินฝากประจำ (เป้าหมายควรมี <b>6 เดือน</b> ของรายจ่ายทั้งหมด)</div>
+              </div>
+
+              <div style="padding:8px 10px; background:var(--card-bg); border-radius:8px; border:1px solid var(--border);">
+                <b style="color:#F59E0B;">🌱 2. หุ้นสหกรณ์ออมทรัพย์ กฟภ. (Coop Shares):</b>
+                <div style="color:var(--text-muted); margin-top:2px;">มูลค่าหุ้นสะสมทั้งหมด เป็นสินทรัพย์ที่สร้าง <b>เงินปันผลรายปี (เน€เธเธฅเธตเนเธข 5.0%/เธเธต)</b> ต่อเนื่องถึงวัยเกษียณ</div>
+              </div>
+
+              <div style="padding:8px 10px; background:var(--card-bg); border-radius:8px; border:1px solid var(--border);">
+                <b style="color:#8B5CF6;">📈 3. สินทรัพย์ลงทุนอื่นๆ (Investments):</b>
+                <div style="color:var(--text-muted); margin-top:2px;">กองทุนรวม SSF/RMF, หุ้นสามัญ, ทองคำ, พอร์ตลงทุนส่วนตัว</div>
+              </div>
+
+              <div style="padding:8px 10px; background:var(--card-bg); border-radius:8px; border:1px solid var(--border);">
+                <b style="color:#10B981;">🏠 4. สินทรัพย์ส่วนตัว (Personal Assets):</b>
+                <div style="color:var(--text-muted); margin-top:2px;">บ้าน, คอนโด, ที่ดิน, รถยนต์ (ประเมินมูลค่าตลาดปัจจุบัน)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== CHAPTER 3: RETIREMENT & 400 DAYS ==================== -->
+        <div id="guideSec_retirement" class="guide-section" style="display:none;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:1.3rem;">⚡</span>
+            <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.05rem;">บทที่ 3: ขุมทรัพย์เกษียณ กสช. &amp; เงินชดเชย 400 วัน</h4>
+          </div>
+
+          <div style="background:var(--card-sub); border:1.5px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px;">
+            <b style="font-size:0.88rem; color:var(--pea-purple-light); display:block; margin-bottom:10px;">🏆 เจาะลึก 4 เสาหลักเงินก้อนเกษียณ กฟภ.:</b>
+            
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:0.8rem; line-height:1.55;">
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:var(--pea-purple-light); font-size:0.85rem;">🚀 1. กองทุนสำรองเลี้ยงชีพ (กสช. กฟภ.):</b>
+                <div style="color:var(--text-muted); margin-top:4px;">
+                  โ€ข <b>เงินสะสมพนักงาน:</b> เลือกออมได้ 5% - 15% ของเงินเดือน (แนะนำ 15% เต็มเพดาน)<br>
+                  โ€ข <b>เงินสมทบจาก กฟภ.:</b> กฟภ. <b>สมทบให้ฟรี 100%</b> ของยอดที่สะสม (สะสม 15% กฟภ. สมทบ 15% รวมเป็น 30% ต่อเดือน)<br>
+                  โ€ข <b>พลังดอกเบี้ยทบต้น:</b> ผลตอบแทนจะทบต้นต่อเนื่อง ทำให้เงินเกษียณเพิ่มขึ้นกว่า <b>3 - 5 เท่า</b>
+                </div>
+              </div>
+
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:#EC4899; font-size:0.85rem;">🎁 2. เงินชดเชย 400 วัน (สวัสดิการ กฟภ.):</b>
+                <div style="color:var(--text-muted); margin-top:4px;">
+                  โ€ข สิทธิประโยชน์สำหรับพนักงานที่ปฏิบัติงานครบ 20 ปีขึ้นไป<br>
+                  โ€ข <b>สูตรคำนวน:</b> <code>(เงินเดือนเดือนสุดท้าย / 30) × 400 วัน</code><br>
+                  โ€ข <i>ตัวอย่าง:</i> เงินเดือนสุดท้าย 100,000 บาท จะได้รับเงินชดเชย = <b>1,333,333 บาท</b>
+                </div>
+              </div>
+
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:#F59E0B; font-size:0.85rem;">🪙 3. หุ้นสหกรณ์ออมทรัพย์ กฟภ.:</b>
+                <div style="color:var(--text-muted); margin-top:4px;">
+                  โ€ข แนะนำคงหุ้นสหกรณ์ไว้หลักล้านบาท เพื่อรับเงินปันผลปีละ 50,000 - 150,000 บาท
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== CHAPTER 4: CPA ANALYTICS & SWR ==================== -->
+        <div id="guideSec_analytics" class="guide-section" style="display:none;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:1.3rem;">📊</span>
+            <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.05rem;">บทที่ 4: แดชบอร์ด CPA, เงินเฟ้อ &amp; กฎการถอนเงิน 4% SWR</h4>
+          </div>
+
+          <div style="background:var(--card-sub); border:1.5px solid var(--border); border-radius:12px; padding:14px; margin-bottom:14px;">
+            <b style="font-size:0.88rem; color:var(--pea-purple-light); display:block; margin-bottom:10px;">🏛️ การแปลผล 4 อัตราส่วนตรวจสุขภาพงบการเงิน CPA:</b>
+            
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; font-size:0.78rem;">
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:#10B981; font-size:0.82rem;">🛡️ 1. เงินสำรอฉุกเฉิน (Emergency Fund):</b>
+                <div style="color:var(--text-muted); margin-top:3px;"><code>สินทรัพย์สภาพคล่อง / รายจ่ายต่อเดือน</code><br>เป้าหมาย <b>≥ 6 เดือน</b> เพื่อรองรับเหตุฉุกเฉินไม่คาดฝัน</div>
+              </div>
+
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:#10B981; font-size:0.82rem;">⚖️ 2. หนี้สินต่อสินทรัพย์ (Debt to Asset D/A):</b>
+                <div style="color:var(--text-muted); margin-top:3px;"><code>(หนี้สินรวม / สินทรัพย์รวม) × 100</code><br>เป้าหมาย <b>≤ 50%</b> (ยิ่งน้อย ความเสี่ยงยิ่งต่ำ)</div>
+              </div>
+
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:var(--pea-purple-light); font-size:0.82rem;">💎 3. ความมั่งคั่งปลอดหนี้ (Solvency):</b>
+                <div style="color:var(--text-muted); margin-top:3px;"><code>(Net Worth / สินทรัพย์รวม) × 100</code><br>เป้าหมาย <b>≥ 50%</b> (อิสรภาพสูงสุด ≥ 70%)</div>
+              </div>
+
+              <div style="padding:10px; background:var(--card-bg); border-radius:10px; border:1px solid var(--border);">
+                <b style="color:#F59E0B; font-size:0.82rem;">🌱 4. สินทรัพย์ลงทุน (Investment Ratio):</b>
+                <div style="color:var(--text-muted); margin-top:3px;"><code>(กสช. + สหกรณ์ + ลงทุน) / Net Worth</code><br>เป้าหมาย <b>≥ 50%</b> เงินทำงานสร้างดอกผล</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Safe Withdrawal Rate (4% SWR) Card -->
+          <div style="background:var(--pea-purple-bg); border-radius:12px; padding:14px; border:1px solid var(--pea-purple-soft);">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+              <span style="font-size:1.2rem;">🛡️</span>
+              <b style="color:var(--pea-purple-light); font-size:0.9rem;">กฎการถอนเงินปลอดภัย 4% SWR (Trinity Study Standard):</b>
+            </div>
+            <p style="margin:0; font-size:0.78rem; line-height:1.6; color:var(--text-main);">
+              หลักการถอนใช้เงินจากพอร์ตเกษียณปีละ <b>4% ของเงินก้อนเริ่มต้น</b> จะทำให้ <b>เงินต้นงอกเงยต่อเนื่องและไม่มีวันหมดตลอดชีพ 30 ปี</b> (เงินต้นคงกระพัน)<br>
+              โ€ข <i>ตัวอย่าง:</i> เงินก้อน 10 ล้านบาท → ถอนใช้ได้ <b>33,333 บาท/เดือน</b>
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================== CHAPTER 5: PWA & BACKUP ==================== -->
+        <div id="guideSec_pwa" class="guide-section" style="display:none;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:1.3rem;">📲</span>
+            <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.05rem;">บทที่ 5: การติดตั้ง PWA ลงมือถือ &amp; การสำรองข้อมูล</h4>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:12px; margin-bottom:14px;">
+            <!-- iOS Safari -->
+            <div style="background:var(--card-sub); border:1.5px solid var(--border); border-radius:12px; padding:12px;">
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;">
+                <span style="font-size:1.2rem;">🍏</span>
+                <b style="color:var(--pea-purple-light); font-size:0.85rem;">สำหรับ iPhone / iPad (iOS):</b>
+              </div>
+              <ol style="margin:0 0 0 18px; padding:0; font-size:0.76rem; line-height:1.6;">
+                <li>เปิดลิงก์ด้วย <b>Safari Browser</b></li>
+                <li>กดปุ่ม <b>แชร์ (📤 Share)</b> ที่แถบด้านล่าง</li>
+                <li>เลือก <b>"Add to Home Screen (เพิ่มไปที่หน้าจอโหม)"</b></li>
+                <li>กด <b>Add (เพิ่ม)</b> จะได้ไอคอนแอปพร้อมใช้งานแบบเต็มจอ</li>
+              </ol>
+            </div>
+
+            <!-- Android Chrome -->
+            <div style="background:var(--card-sub); border:1.5px solid var(--border); border-radius:12px; padding:12px;">
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:8px;">
+                <span style="font-size:1.2rem;">🤖</span>
+                <b style="color:var(--pea-purple-light); font-size:0.85rem;">สำหรับ Android (Samsung, etc.):</b>
+              </div>
+              <ol style="margin:0 0 0 18px; padding:0; font-size:0.76rem; line-height:1.6;">
+                <li>เปิดลิงก์ด้วย <b>Google Chrome</b></li>
+                <li>กดปุ่ม <b>⋮ (3 จุดมุมขวาบน)</b></li>
+                <li>เลือก <b>"Install app (ติดตั้งแอปพลิเคชัน)"</b></li>
+                <li>กดยืนยันติดตั้ง เพื่อใช้งานแบบ Offline</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Backup JSON Feature -->
+          <div style="background:var(--card-bg); border:1.5px solid var(--border); border-radius:12px; padding:14px;">
+            <b style="font-size:0.88rem; color:var(--pea-purple-light); display:block; margin-bottom:6px;">💾 วิธีการสำรอง &amp; กู้คืนข้อมูล (Backup &amp; Restore):</b>
+            <div style="font-size:0.78rem; line-height:1.6; color:var(--text-muted);">
+              โ€ข <b>ส่งออกไฟล์สำรอง:</b> ไปที่ Tab 6 → กดปุ่ม <code>📥 ส่งออกข้อมูล (Backup JSON)</code> ระบบจะบันทึกไฟล์ <code>PEA_Financial_Planner_Backup.json</code> ไว้ในเครื่อง<br>
+              โ€ข <b>กู้คืนข้อมูลเมื่อเปลี่ยนเครื่อง:</b> ไปที่ Tab 6 → กดปุ่ม <code>📤 นำเข้าข้อมูล (Restore JSON)</code> แล้วเลือกไฟล์สำรอง ข้อมูลทั้งหมดจะกลับมา 100%
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== CHAPTER 6: FAQ ==================== -->
+        <div id="guideSec_faq" class="guide-section" style="display:none;">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:1.3rem;">❓</span>
+            <h4 style="margin:0; color:var(--pea-purple-light); font-size:1.05rem;">บทที่ 6: คำถามที่พบบ่อย (FAQ &amp; Tips)</h4>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="background:var(--card-sub); border-radius:10px; padding:12px; border:1px solid var(--border);">
+              <b style="color:var(--pea-purple-light); font-size:0.82rem;">Q1: ข้อมูลที่กรอกจะหายไหม เมื่อกด Force Update หรือปิดแอป?</b>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+                <b>A: ไม่หายครับ!</b> ระบบมี Auto-Save อัตโนมัติลงใน LocalStorage และปุ่ม Force Update จะสั่งบันทึกข้อมูลล่าสุดก่อนรีโหลดเสมอ
+              </div>
+            </div>
+
+            <div style="background:var(--card-sub); border-radius:10px; padding:12px; border:1px solid var(--border);">
+              <b style="color:var(--pea-purple-light); font-size:0.82rem;">Q2: ทำไมพนักงาน กฟภ. ควรออม กสช. เต็ม 15%?</b>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+                <b>A: เพราะได้เงินสมทบฟรีจาก กฟภ. อีก 15% (100% Match)</b> เท่ากับได้ผลตอบแทน 100% ทันทีตั้งแต่เดือนแรก พร้อมลดหย่อนภาษีได้สูงสุดปีละ 500,000 บาท
+              </div>
+            </div>
+
+            <div style="background:var(--card-sub); border-radius:10px; padding:12px; border:1px solid var(--border);">
+              <b style="color:var(--pea-purple-light); font-size:0.82rem;">Q3: เงินชดเชย 400 วัน คำนวนจากเงินเดือนไหน?</b>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+                <b>A: คิดจากเงินเดือนเดือนสุดท้ายณ วันเกษียณอายุ</b> ระบบจะคำนวณอัตราขึ้นเงินเดือนไปจนถึงอายุ 60 ปีให้อัตโนมัติ
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding-top:12px; margin-top:12px; font-size:0.75rem;">
+        <span style="color:var(--text-muted);">PEA Financial Planner • คู่มือฉบับสมบูรณ์</span>
+        <button type="button" class="btn btn-purple" style="padding:6px 16px; font-size:0.8rem; font-weight:700; border-radius:8px;" onclick="closeUserGuideModal()">ปิดหน้าต่าง</button>
+      </div>
+
+    </div>
+  </div>
         <div style="display:flex; align-items:center; gap:6px;">
           <button type="button" class="btn btn-gold" style="padding:5px 10px; font-size:0.75rem; font-weight:700; border-radius:8px;" onclick="exportGuidePDF()">
             <span>📥 PDF</span>
@@ -5593,7 +5956,7 @@
     function exportGuidePDF() {
       openUserGuideModal();
       // Temporarily display all sections for complete printing
-      const secs = ['intro', 'cashflow', 'networth', 'retirement', 'analytics', 'pwa'];
+      const secs = ['intro', 'cashflow', 'networth', 'retirement', 'analytics', 'pwa', 'faq'];
       secs.forEach(id => {
         const sec = $('guideSec_' + id);
         if (sec) sec.style.display = 'block';
@@ -9535,7 +9898,7 @@
     let tempProfileAvatar = null;
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v2.9.0';
+    const CURRENT_APP_VERSION = 'v2.9.1';
     const CURRENT_RELEASE_DATE = '24 เธชเธดเธเธซเธฒเธเธก 2569';
 
     const DEFAULT_APP_META = {
@@ -9617,7 +9980,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.9.0';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.9.1';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -9636,7 +9999,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.9.0'
+      appVersion: 'v2.9.1'
       };
 
       try {
