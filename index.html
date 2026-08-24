@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th" data-theme="light">
 <head>
   <meta charset="UTF-8">
@@ -8961,14 +8961,17 @@
     let tempProfileAvatar = null;
 
     // ==================== APP METADATA & VERSION CONFIG ====================
+    const CURRENT_APP_VERSION = 'v2.8.2';
+    const CURRENT_RELEASE_DATE = '24 เธชเธดเธเธซเธฒเธเธก 2569';
+
     const DEFAULT_APP_META = {
-      creatorName: 'นายอภิชาติ ยุพิน',
+      creatorName: 'เธเธฒเธขเธญเธ เธดเธเธฒเธ•เธด เธขเธธเธเธดเธ',
       creatorEmpId: '504195',
-      creatorPosition: 'พนักงานช่าง (ปฏิบัติการระบบไฟฟ้า) ระดับ 6',
-      creatorAffiliationShort: 'ผปบ./กฟส.ขก.2/กฟจ.ขก./กฟฉ.1/สายงาน (ฉ)',
-      creatorAffiliationFull: 'แผนกปฏิบัติการและบำรุงรักษาระบบไฟฟ้า\nการไฟฟ้าส่วนภูมิภาคสาขาเมืองขอนแก่น 2\nการไฟฟ้าส่วนภูมิภาคจังหวัดขอนแก่น\nการไฟฟ้าส่วนภูมิภาค เขต 1 (ภาคตะวันออกเฉียงเหนือ) จังหวัดอุดรธานี\nสายงานภาคตะวันออกเฉียงเหนือ',
-      releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.8.2'
+      creatorPosition: 'เธเธเธฑเธเธเธฒเธเธเนเธฒเธ (เธเธเธดเธเธฑเธ•เธดเธเธฒเธฃเธฃเธฐเธเธเนเธเธเนเธฒ) เธฃเธฐเธ”เธฑเธ 6',
+      creatorAffiliationShort: 'เธเธเธ./เธเธเธช.เธเธ.2/เธเธเธ.เธเธ./เธเธเธ.1/เธชเธฒเธขเธเธฒเธ (เธ)',
+      creatorAffiliationFull: 'เนเธเธเธเธเธเธดเธเธฑเธ•เธดเธเธฒเธฃเนเธฅเธฐเธเธณเธฃเธธเธเธฃเธฑเธเธฉเธฒเธฃเธฐเธเธเนเธเธเนเธฒ\nเธเธฒเธฃเนเธเธเนเธฒเธชเนเธงเธเธ เธนเธกเธดเธ เธฒเธเธชเธฒเธเธฒเน€เธกเธทเธญเธเธเธญเธเนเธเนเธ 2\nเธเธฒเธฃเนเธเธเนเธฒเธชเนเธงเธเธ เธนเธกเธดเธ เธฒเธเธเธฑเธเธซเธงเธฑเธ”เธเธญเธเนเธเนเธ\nเธเธฒเธฃเนเธเธเนเธฒเธชเนเธงเธเธ เธนเธกเธดเธ เธฒเธ เน€เธเธ• 1 (เธ เธฒเธเธ•เธฐเธงเธฑเธเธญเธญเธเน€เธเธตเธขเธเน€เธซเธเธทเธญ) เธเธฑเธเธซเธงเธฑเธ”เธญเธธเธ”เธฃเธเธฒเธเธต\nเธชเธฒเธขเธเธฒเธเธ เธฒเธเธ•เธฐเธงเธฑเธเธญเธญเธเน€เธเธตเธขเธเน€เธซเธเธทเธญ',
+      releaseDate: CURRENT_RELEASE_DATE,
+      appVersion: CURRENT_APP_VERSION
     };
 
     function getAppMetadata() {
@@ -8976,7 +8979,12 @@
         const stored = localStorage.getItem('pea_app_metadata');
         if (stored) {
           const parsed = JSON.parse(stored);
-          return { ...DEFAULT_APP_META, ...parsed };
+          return {
+            ...DEFAULT_APP_META,
+            ...parsed,
+            appVersion: CURRENT_APP_VERSION,
+            releaseDate: CURRENT_RELEASE_DATE
+          };
         }
       } catch (e) {
         console.warn('Error reading app metadata:', e);
