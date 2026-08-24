@@ -4585,7 +4585,7 @@
             <!-- Release Date & System Version -->
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.9.3</span>
+              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.9.4</span>
             </div>
 
             <!-- Force Update & Refresh Button -->
@@ -5602,6 +5602,16 @@
 
     // ==================== PWA SMART UPDATE ENGINE ====================
             // ==================== USER GUIDE & LEARNING CENTER FUNCTIONS ====================
+        function toggleCreatorCard() {
+      const body = $('creatorCardBody');
+      const arrow = $('creatorCardArrow');
+      if (body) {
+        const isHidden = (body.style.display === 'none');
+        body.style.display = isHidden ? 'block' : 'none';
+        if (arrow) arrow.textContent = isHidden ? 'โ–ผ' : 'โ–ฒ';
+      }
+    }
+
     function openUserGuideModal() {
       const modal = $('userGuideModal');
       if (modal) modal.style.display = 'flex';
@@ -9580,7 +9590,7 @@
     let tempProfileAvatar = null;
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v2.9.3';
+    const CURRENT_APP_VERSION = 'v2.9.4';
     const CURRENT_RELEASE_DATE = '24 เธชเธดเธเธซเธฒเธเธก 2569';
 
     const DEFAULT_APP_META = {
@@ -9662,7 +9672,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.9.3';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.9.4';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -9681,7 +9691,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.9.3'
+      appVersion: 'v2.9.4'
       };
 
       try {
