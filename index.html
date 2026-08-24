@@ -4031,6 +4031,44 @@
         </div>
       </div>
 
+      <!-- CPA Financial Ratio Health Scorecard (4 Ratios) -->
+      <div class="card" style="border-radius:14px; margin-bottom:14px; background:linear-gradient(135deg, var(--card-bg), var(--pea-purple-bg)); border:1.5px solid var(--pea-purple-soft);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+          <div style="display:inline-flex; align-items:center; gap:6px;">
+            <span style="font-size:1.05rem;">🏛️</span>
+            <b style="font-size:0.92rem; color:var(--text-main);">การตรวจสุขภาพงบการเงิน 4 อัตราส่วนสากล (CPA Financial Ratio Health Check)</b>
+          </div>
+          <span class="badge badge-purple" style="font-size:0.65rem;">Accounting Standard</span>
+        </div>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px;">
+          <!-- Ratio 1: Emergency Fund -->
+          <div style="background:var(--card-bg); padding:10px 12px; border-radius:10px; border:1px solid var(--border); text-align:center;">
+            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:2px;">🛡️ เงินสำรองฉุกเฉิน</div>
+            <div id="cpaEmergencyRatio" class="num-font" style="font-size:1.1rem; font-weight:800; color:#10B981;">0.0 เดือน</div>
+            <div id="cpaEmergencyBadge" style="font-size:0.65rem; font-weight:700; margin-top:2px;" class="badge badge-green">ปลอดภัย (≥ 6 ด.)</div>
+          </div>
+          <!-- Ratio 2: Debt to Asset -->
+          <div style="background:var(--card-bg); padding:10px 12px; border-radius:10px; border:1px solid var(--border); text-align:center;">
+            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:2px;">⚖️ หนี้สินต่อสินทรัพย์ (D/A)</div>
+            <div id="cpaDebtToAssetRatio" class="num-font" style="font-size:1.1rem; font-weight:800; color:#10B981;">0.0%</div>
+            <div id="cpaDebtToAssetBadge" style="font-size:0.65rem; font-weight:700; margin-top:2px;" class="badge badge-green">ปลอดภัย (≤ 50%)</div>
+          </div>
+          <!-- Ratio 3: Solvency Ratio -->
+          <div style="background:var(--card-bg); padding:10px 12px; border-radius:10px; border:1px solid var(--border); text-align:center;">
+            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:2px;">💎 ความมั่งคั่งปลอดหนี้</div>
+            <div id="cpaSolvencyRatio" class="num-font" style="font-size:1.1rem; font-weight:800; color:var(--pea-purple-light);">0.0%</div>
+            <div id="cpaSolvencyBadge" style="font-size:0.65rem; font-weight:700; margin-top:2px;" class="badge badge-purple">ดีเยี่ยม (≥ 50%)</div>
+          </div>
+          <!-- Ratio 4: Investment to Net Worth -->
+          <div style="background:var(--card-bg); padding:10px 12px; border-radius:10px; border:1px solid var(--border); text-align:center;">
+            <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:2px;">🌱 สินทรัพย์ลงทุนสร้างผลตอบแทน</div>
+            <div id="cpaInvestRatio" class="num-font" style="font-size:1.1rem; font-weight:800; color:#F59E0B;">0.0%</div>
+            <div id="cpaInvestBadge" style="font-size:0.65rem; font-weight:700; margin-top:2px;" class="badge badge-gold">กสช.+สหกรณ์ (≥ 50%)</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Charts Grid Row 1: Cashflow & Net Worth -->
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px; margin-bottom:12px;">
         <!-- Chart 1: Cashflow -->
@@ -4171,33 +4209,33 @@
         </div>
       </div>
 
-            <!-- Macroeconomic & CFP Deep Insights: Inflation, 4% SWR & Passive Income Engine -->
+                  <!-- Macroeconomic & CFP Deep Insights: Inflation, 4% SWR & Passive Income Engine -->
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
         
         <!-- Card 1: Economist - Real Purchasing Power & Income Replacement (IRR) -->
         <div class="card" style="border-radius:14px; border:1px solid var(--border); background:var(--card-bg);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
             <div style="display:inline-flex; align-items:center; gap:6px;">
-              <span style="font-size:1.1rem;">๐</span>
-              <b style="font-size:0.88rem; color:var(--text-main);">เธญเธณเธเธฒเธเธเธทเนเธญเนเธ—เนเธเธฃเธดเธ &amp; เธญเธฑเธ•เธฃเธฒเธ—เธ”เนเธ—เธเธฃเธฒเธขเนเธ”เน</b>
+              <span style="font-size:1.1rem;">🌍</span>
+              <b style="font-size:0.88rem; color:var(--text-main);">อำนาจซื้อแท้จริง &amp; อัตราทดแทนรายได้</b>
             </div>
             <span class="badge badge-purple" style="font-size:0.62rem;">Economist Model</span>
           </div>
           <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:10px;">
-            เธงเธดเน€เธเธฃเธฒเธฐเธซเนเธกเธนเธฅเธเนเธฒเนเธ—เนเธเธฃเธดเธเธซเธฅเธฑเธเธซเธฑเธเน€เธเธดเธเน€เธเนเธญ (2.5%/เธเธต) เนเธฅเธฐเธชเธฑเธ”เธชเนเธงเธเธฃเธฒเธขเนเธ”เนเธ—เธ”เนเธ—เธเน€เธเธดเธเน€เธ”เธทเธญเธเธเนเธญเธเน€เธเธฉเธตเธขเธ“
+            วิเคราะห์มูลค่าแท้จริงหลังหักเงินเฟ้อ (2.5%/ปี) แลาะสัดส่วนรายได้ทดแทนเงินเดือนก่อนเกษียณ
           </div>
           <div style="background:var(--pea-purple-bg); border-radius:10px; padding:10px 12px; border:1px solid var(--pea-purple-soft); margin-bottom:8px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <span style="font-size:0.75rem; color:var(--text-muted);">เธกเธนเธฅเธเนเธฒเนเธ—เนเธเธฃเธดเธ (Real Purchasing Power):</span>
-              <span id="econRealWealthVal" class="num-font" style="font-size:1rem; font-weight:800; color:var(--pea-purple-light);">0 เธฟ</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">มูลค่าแท้จริง (Real Purchasing Power):</span>
+              <span id="econRealWealthVal" class="num-font" style="font-size:1rem; font-weight:800; color:var(--pea-purple-light);">0 ฿</span>
             </div>
             <div style="font-size:0.68rem; color:var(--text-muted);" id="econRealWealthDesc">
-              เน€เธเธดเธเธเนเธญเธ 0 เธฟ เนเธเธญเธตเธ 0 เธเธต เธเธฐเธกเธตเธญเธณเธเธฒเธเธเธทเนเธญเน€เธ—เธตเธขเธเน€เธ—เนเธฒเน€เธเธดเธเธงเธฑเธเธเธตเน
+              เงินก้อน 0 ฿ ในอีก 0 ปี จาะมีอำนาจซื้อเทียบเท่าเงินวันนี้
             </div>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 8px; background:var(--bg-main); border-radius:8px; border:1px solid var(--border);">
-            <span style="font-size:0.72rem; color:var(--text-main);">๐ฏ เธญเธฑเธ•เธฃเธฒเธ—เธ”เนเธ—เธเธฃเธฒเธขเนเธ”เน (IRR):</span>
-            <span id="econIrrBadge" class="badge badge-green num-font" style="font-size:0.78rem; font-weight:700;">0.0% (เน€เธเนเธฒเธซเธกเธฒเธข 50-70%)</span>
+            <span style="font-size:0.72rem; color:var(--text-main);">🎯 อัตราทดแทนรายได้ (IRR):</span>
+            <span id="econIrrBadge" class="badge badge-green num-font" style="font-size:0.78rem; font-weight:700;">0.0% (เป้าหมาย 50-70%)</span>
           </div>
         </div>
 
@@ -4205,26 +4243,26 @@
         <div class="card" style="border-radius:14px; border:1px solid var(--border); background:var(--card-bg);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
             <div style="display:inline-flex; align-items:center; gap:6px;">
-              <span style="font-size:1.1rem;">๐ก๏ธ</span>
-              <b style="font-size:0.88rem; color:var(--text-main);">เธเธเธเธฒเธฃเธ–เธญเธเน€เธเธดเธเธเธฅเธญเธ”เธ เธฑเธข 4% SWR</b>
+              <span style="font-size:1.1rem;">🛡️</span>
+              <b style="font-size:0.88rem; color:var(--text-main);">กฎการถอนเงินปลอดภัย 4% SWR</b>
             </div>
             <span class="badge badge-green" style="font-size:0.62rem;">CFP Standard</span>
           </div>
           <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:10px;">
-            เธเธเธเธฃเธฐเธกเธฒเธ“เธ–เธญเธเนเธเนเธเนเธฒเธขเธ•เนเธญเน€เธ”เธทเธญเธเธ—เธตเนเธเธฅเธญเธ”เธ เธฑเธขเธ•เธฅเธญเธ”เธเธตเธ เนเธ”เธขเนเธกเนเธเธฃเธฐเธ—เธเน€เธเธดเธเธ•เนเธเนเธฅเธฐเธเธญเธฃเนเธ•เธขเธฑเธเธเธเน€เธ•เธดเธเนเธ•
+            งบประมาณถอนใช้จ่ายต่อเดือนที่ปลอดภัยตลอดชีพ โดยไม่กระทบเงินต้นและพอร์ตยังคงเติบโต
           </div>
           <div style="background:var(--pea-purple-bg); border-radius:10px; padding:10px 12px; border:1px solid var(--pea-purple-soft); margin-bottom:8px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <span style="font-size:0.75rem; color:var(--text-muted);">เธเธเธ–เธญเธเนเธเนเธเนเธฒเธขเธเธฅเธญเธ”เธ เธฑเธข/เน€เธ”เธทเธญเธ:</span>
-              <span id="cfpSwrMonthly" class="num-font" style="font-size:1.05rem; font-weight:800; color:#10B981;">0 เธฟ/เธ”.</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">งบถอนใช้จ่ายปลอดภัย/เดือน:</span>
+              <span id="cfpSwrMonthly" class="num-font" style="font-size:1.05rem; font-weight:800; color:#10B981;">0 ฿/ด.</span>
             </div>
             <div style="font-size:0.68rem; color:var(--text-muted);" id="cfpSwrAnnualDesc">
-              เธเธดเธ”เน€เธเนเธเธเธเธเธฃเธฐเธกเธฒเธ“เธ–เธญเธเนเธเนเธเธตเธฅเธฐ 0 เธฟ (4% เธ•เนเธญเธเธต)
+              คิดเป็นงบประมาณถอนใช้ปีละ 0 ฿ (4% ต่อปี)
             </div>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 8px; background:var(--bg-main); border-radius:8px; border:1px solid var(--border);">
-            <span style="font-size:0.72rem; color:var(--text-main);">๐”’ เธชเธ–เธฒเธเธฐเธเธงเธฒเธกเธขเธฑเนเธเธขเธทเธเน€เธเธดเธเธ•เนเธ:</span>
-            <span id="cfpSwrStatus" class="badge badge-purple" style="font-size:0.72rem; font-weight:700;">เน€เธเธดเธเธ•เนเธเธเธเธเธฃเธฐเธเธฑเธเธ•เธฅเธญเธ”เธเธตเธ</span>
+            <span style="font-size:0.72rem; color:var(--text-main);">🔒 สถานะความยั่งยืนเงินต้น:</span>
+            <span id="cfpSwrStatus" class="badge badge-purple" style="font-size:0.72rem; font-weight:700;">เงินต้นคงกระพันตลอดชีพ</span>
           </div>
         </div>
 
@@ -4232,27 +4270,27 @@
         <div class="card" style="border-radius:14px; border:1px solid var(--border); background:var(--card-bg);">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
             <div style="display:inline-flex; align-items:center; gap:6px;">
-              <span style="font-size:1.1rem;">๐’ธ</span>
-              <b style="font-size:0.88rem; color:var(--text-main);">เน€เธเธฃเธทเนเธญเธเธเธฑเธเธฃเน€เธเธดเธเธเธฑเธเธเธฅ &amp; Passive Income</b>
+              <span style="font-size:1.1rem;">💸</span>
+              <b style="font-size:0.88rem; color:var(--text-main);">เครื่องจักรเงินปันผล &amp; Passive Income</b>
             </div>
             <span class="badge badge-gold" style="font-size:0.62rem;">Coop &amp; Dividend</span>
           </div>
           <div style="font-size:0.72rem; color:var(--text-muted); margin-bottom:10px;">
-            เธเธฃเธฐเธกเธฒเธ“เธเธฒเธฃเน€เธเธดเธเธเธฑเธเธเธฅเธซเธธเนเธเธชเธซเธเธฃเธ“เน เธเธเธ . เนเธฅเธฐเธเธฅเธ•เธญเธเนเธ—เธ เธเธชเธ. เธ—เธตเนเธเธฅเธดเธ•เธเธฃเธฐเนเธชเน€เธเธดเธเธชเธ”เธ•เนเธญเน€เธเธทเนเธญเธ
+            ประมาณการเงินปันผลหุ้นสหกรณ์ กฟภ. และผลตอบแทน กสช. ที่ผลิตกระแสเงินสดต่อเนื่อง
           </div>
           <div style="background:var(--pea-purple-bg); border-radius:10px; padding:10px 12px; border:1px solid var(--pea-purple-soft); margin-bottom:8px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <span style="font-size:0.75rem; color:var(--text-muted);">เธเธฑเธเธเธฅเธชเธซเธเธฃเธ“เน เธเธเธ . เน€เธเธฅเธตเนเธข/เธเธต:</span>
-              <span id="cfpCoopDivAnnual" class="num-font" style="font-size:1rem; font-weight:800; color:#F59E0B;">0 เธฟ/เธเธต</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">ปันผลสหกรณ์ กฟภ. เฉลี่ย/ปี:</span>
+              <span id="cfpCoopDivAnnual" class="num-font" style="font-size:1rem; font-weight:800; color:#F59E0B;">0 ฿/ปี</span>
             </div>
             <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:0.75rem; color:var(--text-muted);">เธเธฃเธฐเนเธชเน€เธเธดเธเธชเธ”เธฃเธฑเธเน€เธเธฅเธตเนเธข/เน€เธ”เธทเธญเธ:</span>
-              <span id="cfpPassiveMonthly" class="num-font" style="font-size:1rem; font-weight:800; color:#10B981;">0 เธฟ/เธ”.</span>
+              <span style="font-size:0.75rem; color:var(--text-muted);">กระแสเงินสดรับเฉลี่ย/เดือน:</span>
+              <span id="cfpPassiveMonthly" class="num-font" style="font-size:1rem; font-weight:800; color:#10B981;">0 ฿/ด.</span>
             </div>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding:6px 8px; background:var(--bg-main); border-radius:8px; border:1px solid var(--border);">
-            <span style="font-size:0.72rem; color:var(--text-main);">โก เธเธฑเธเธเธฅเธซเธธเนเธเธชเธซเธเธฃเธ“เน (~5.0%/เธเธต):</span>
-            <span id="cfpCoopYieldBadge" class="badge badge-gold num-font" style="font-size:0.75rem; font-weight:700;">เธชเธฃเนเธฒเธ Passive Income</span>
+            <span style="font-size:0.72rem; color:var(--text-main);">⚡ ปันผลหุ้นสหกรณ์ (~5.0%/ปี):</span>
+            <span id="cfpCoopYieldBadge" class="badge badge-gold num-font" style="font-size:0.75rem; font-weight:700;">สร้าง Passive Income</span>
           </div>
         </div>
 
@@ -4547,7 +4585,7 @@
             <!-- Release Date & System Version -->
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
               <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.5</span>
+              <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.8.6</span>
             </div>
 
             <!-- Force Update & Refresh Button -->
@@ -5275,7 +5313,7 @@
       // Check if this page load was triggered by a force update
       if (window.location.search.includes('v=') || window.location.search.includes('t=')) {
         setTimeout(() => {
-          showToast('✅ อัปเดตเป็นเวอร์ชันล่าสุด v2.8.5 เรียบร้อยแล้ว!');
+          showToast('✅ อัปเดตเป็นเวอร์ชันล่าสุด v2.8.6 เรียบร้อยแล้ว!');
           try {
             window.history.replaceState({}, document.title, window.location.pathname);
           } catch(e) {}
@@ -5499,6 +5537,97 @@
         $('analyticsRetireScore').textContent = fmt2(retirePct) + '%';
         $('analyticsRetireScore').style.color = retirePct >= 100 ? '#10B981' : (retirePct >= 70 ? '#F59E0B' : '#EF4444');
       }
+
+      // ==================== 1. CPA RATIO HEALTH SCORECARD ====================
+      const livingMonthlyExp = Math.max(1, totalExpense - (state.exp_saving || 0));
+      const emergencyMonths = (liquidAssets / livingMonthlyExp);
+      const debtToAssetPct = totalAssets > 0 ? ((totalDebtPrincipal / totalAssets) * 100) : 0;
+      const solvencyPct = totalAssets > 0 ? ((netWorth / totalAssets) * 100) : 100;
+      const investmentRatioPct = netWorth > 0 ? (((pfAcc + coopShares + invAssets) / netWorth) * 100) : 0;
+
+      if (cpaEmergencyRatio) {
+        cpaEmergencyRatio.textContent = emergencyMonths.toFixed(1) + ' เดือน';
+        cpaEmergencyRatio.style.color = emergencyMonths >= 6 ? '#10B981' : (emergencyMonths >= 3 ? '#F59E0B' : '#EF4444');
+      }
+      if (cpaEmergencyBadge) {
+        cpaEmergencyBadge.textContent = emergencyMonths >= 6 ? 'ยอดเยี่ยม (≥ 6 ด.)' : (emergencyMonths >= 3 ? 'พอใช้ (3-6 ด.)' : 'ควรเพิ่ม (< 3 ด.)');
+        cpaEmergencyBadge.className = emergencyMonths >= 6 ? 'badge badge-green' : (emergencyMonths >= 3 ? 'badge badge-gold' : 'badge badge-danger');
+      }
+
+      if (cpaDebtToAssetRatio) {
+        cpaDebtToAssetRatio.textContent = fmt2(debtToAssetPct) + '%';
+        cpaDebtToAssetRatio.style.color = debtToAssetPct <= 35 ? '#10B981' : (debtToAssetPct <= 50 ? '#F59E0B' : '#EF4444');
+      }
+      if (cpaDebtToAssetBadge) {
+        cpaDebtToAssetBadge.textContent = debtToAssetPct <= 35 ? 'ปลอดภัยสูง (≤ 35%)' : (debtToAssetPct <= 50 ? 'เกณฑ์ปลอดภัย (≤ 50%)' : 'ภาระหนี้สูง (> 50%)');
+        cpaDebtToAssetBadge.className = debtToAssetPct <= 50 ? 'badge badge-green' : 'badge badge-danger';
+      }
+
+      if (cpaSolvencyRatio) {
+        cpaSolvencyRatio.textContent = fmt2(solvencyPct) + '%';
+        cpaSolvencyRatio.style.color = solvencyPct >= 70 ? '#10B981' : (solvencyPct >= 50 ? 'var(--pea-purple-light)' : '#EF4444');
+      }
+      if (cpaSolvencyBadge) {
+        cpaSolvencyBadge.textContent = solvencyPct >= 70 ? 'อิสรภาพสูง (≥ 70%)' : (solvencyPct >= 50 ? 'ดีเยี่ยม (≥ 50%)' : 'ควรเร่งปลดหนี้');
+        cpaSolvencyBadge.className = solvencyPct >= 50 ? 'badge badge-purple' : 'badge badge-gold';
+      }
+
+      if (cpaInvestRatio) {
+        cpaInvestRatio.textContent = fmt2(investmentRatioPct) + '%';
+        cpaInvestRatio.style.color = investmentRatioPct >= 50 ? '#10B981' : '#F59E0B';
+      }
+      if (cpaInvestBadge) {
+        cpaInvestBadge.textContent = investmentRatioPct >= 50 ? 'เงินทำงานดีเยี่ยม (≥ 50%)' : 'ควรเพิ่ม กสช./สหกรณ์';
+        cpaInvestBadge.className = investmentRatioPct >= 50 ? 'badge badge-green' : 'badge badge-gold';
+      }
+
+      // ==================== 2. ECONOMIST & CFP DEEP INSIGHTS ====================
+      const curAgeForEcon = num('pea_currentAge') || 35;
+      const retAgeForEcon = num('pea_retireAge') || 60;
+      const curSalForEcon = num('pea_salary') || 38200;
+      const gRateForEcon = (parseFloat(pea_salaryGrowthRate ? pea_salaryGrowthRate.value : '4.5') || 4.5) / 100;
+      const yearsToRetireForEcon = Math.max(0, retAgeForEcon - curAgeForEcon);
+
+      const finalSalaryForEcon = Math.round(curSalForEcon * Math.pow(1 + gRateForEcon, yearsToRetireForEcon));
+      const estPfForEcon = Math.round(pfAcc * 1.95);
+      const estCoopForEcon = Math.round(coopShares * 1.6);
+      const estSevForEcon = Math.round((finalSalaryForEcon / 30) * 400);
+      const estOtherForEcon = Math.round(liquidAssets + invAssets);
+      const totalLumpSumForEcon = estPfForEcon + estCoopForEcon + estSevForEcon + estOtherForEcon;
+
+      // Real Purchasing Power (@ 2.5% inflation)
+      const inflationRate = 0.025;
+      const realWealthVal = Math.round(totalLumpSumForEcon / Math.pow(1 + inflationRate, yearsToRetireForEcon));
+      
+      // CFP 4% Rule Safe Withdrawal Rate
+      const safeMonthlyWithdrawal = Math.round((totalLumpSumForEcon * 0.04) / 12);
+      const safeAnnualWithdrawal = safeMonthlyWithdrawal * 12;
+
+      // Income Replacement Ratio (IRR)
+      const irrPct = finalSalaryForEcon > 0 ? ((safeMonthlyWithdrawal / finalSalaryForEcon) * 100) : 0;
+
+      // Passive Income Engine
+      const coopDivAnnual = Math.round(estCoopForEcon * 0.05); // 5% avg coop dividend
+      const pfYieldAnnual = Math.round(estPfForEcon * 0.04); // 4% avg pf yield
+      const totalPassiveAnnual = coopDivAnnual + pfYieldAnnual;
+      const totalPassiveMonthly = Math.round(totalPassiveAnnual / 12);
+
+      if (econRealWealthVal) econRealWealthVal.textContent = fmt(realWealthVal) + ' ฿';
+      if (econRealWealthDesc) econRealWealthDesc.textContent = เงินก้อน  ฿ ในอีก  ปี จะมีอำนาจซื้อเทียบเท่าเงินวันนี้;
+      if (econIrrBadge) {
+        econIrrBadge.textContent = ${fmt2(irrPct)}% (เป้าหมาย 50-70%);
+        econIrrBadge.className = irrPct >= 50 ? 'badge badge-green num-font' : 'badge badge-gold num-font';
+      }
+
+      if (cfpSwrMonthly) cfpSwrMonthly.textContent = fmt(safeMonthlyWithdrawal) + ' ฿/ด.';
+      if (cfpSwrAnnualDesc) cfpSwrAnnualDesc.textContent = คิดเป็นงบประมาณถอนใช้ปีละ  ฿ (กฎ 4% SWR);
+      if (cfpSwrStatus) {
+        cfpSwrStatus.textContent = totalLumpSumForEcon > 3000000 ? '🔒 เงินต้นคงกระพันตลอดชีพ' : '⚠️ แนะนำเพิ่มเงินออมเสริม';
+        cfpSwrStatus.className = totalLumpSumForEcon > 3000000 ? 'badge badge-green' : 'badge badge-gold';
+      }
+
+      if (cfpCoopDivAnnual) cfpCoopDivAnnual.textContent = fmt(coopDivAnnual) + ' ฿/ปี';
+      if (cfpPassiveMonthly) cfpPassiveMonthly.textContent = fmt(totalPassiveMonthly) + ' ฿/ด.';
 
       // -------------------------------------------------------------
       // Chart 1: Cashflow Breakdown (Doughnut)
@@ -9067,7 +9196,7 @@
     let tempProfileAvatar = null;
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v2.8.5';
+    const CURRENT_APP_VERSION = 'v2.8.6';
     const CURRENT_RELEASE_DATE = '24 เธชเธดเธเธซเธฒเธเธก 2569';
 
     const DEFAULT_APP_META = {
@@ -9149,7 +9278,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.5';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.8.6';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -9168,7 +9297,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.8.5'
+      appVersion: 'v2.8.6'
       };
 
       try {
