@@ -4592,7 +4592,7 @@
               <!-- Release Date & System Version -->
               <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">
                 <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 24 สิงหาคม 2569</span>
-                <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.9.6</span>
+                <span style="color:var(--pea-purple-light); font-weight:700;" id="creatorCardVersion">⚡ PEA Financial Planner v2.9.7</span>
               </div>
 
               <!-- Force Update & Refresh Button -->
@@ -6485,7 +6485,7 @@
         else if (state.pea_pfYield !== undefined) pfYield = state.pea_pfYield;
         const pfYieldRate = pfYield / 100;
 
-        let basePfRate = (num('pea_pfRate') || (state.pea_pfRate !== undefined ? state.pea_pfRate : 5)) / 100;
+        let basePfRate = (num('pea_employeeRate') || num('pea_pfRate') || (state.pea_pfRate !== undefined ? state.pea_pfRate : 5)) / 100;
 
         const pfLabels = [];
         const dataEmpContrib = [];
@@ -6740,7 +6740,7 @@
 
         const desiredExpenseToday = num('pea_desiredExpenseToday') || 25000;
         const monthlyCoop = num('pea_coopShareMonthly') || 1000;
-        const monthlyPfRate = (num('pea_pfRate') || 5) / 100;
+        const monthlyPfRate = (num('pea_employeeRate') || num('pea_pfRate') || 5) / 100;
         const peaMatchRate = monthlyPfRate;
 
         // Clamp Legacy Slider
@@ -7683,26 +7683,26 @@
       return `${day} ${month} ${year} เวลา ${hours}:${mins}:${secs} น.`;
     }
 
-    function updateSavedTimestampUI(dateStr) {
+        function updateSavedTimestampUI(dateStr) {
       if (!dateStr) dateStr = formatThaiDateTime(new Date());
       state.last_saved_time = dateStr;
       if ($('dashLastSavedFullText')) $('dashLastSavedFullText').textContent = dateStr;
       
       const now = new Date();
-      const shortTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} น.`;
-      if ($('saveStatusText')) $('saveStatusText').textContent = `บันทึกแล้ว ${shortTime}`;
+      const shortTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} เธ.`;
+      if ($('saveStatusText')) $('saveStatusText').textContent = `เธเธฑเธเธ—เธถเธเนเธฅเนเธง ${shortTime}`;
     }
 
-    // Auto-save debounced
+    // Auto-save debounced with safe element checks
     function triggerAutoSave() {
-      $('saveDot').className = 'save-dot';
-      $('saveStatusText').textContent = 'บันทึก...';
+      if ($('saveDot')) $('saveDot').className = 'save-dot';
+      if ($('saveStatusText')) $('saveStatusText').textContent = 'เธเธฑเธเธ—เธถเธ...';
       clearTimeout(autoSaveTimer);
       autoSaveTimer = setTimeout(() => {
         const timeNow = formatThaiDateTime(new Date());
         state.last_saved_time = timeNow;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        $('saveDot').className = 'save-dot synced';
+        if ($('saveDot')) $('saveDot').className = 'save-dot synced';
         updateSavedTimestampUI(timeNow);
       }, 500);
     }
@@ -9721,7 +9721,7 @@
     let tempProfileAvatar = null;
 
         // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v2.9.6';
+    const CURRENT_APP_VERSION = 'v2.9.7';
     const CURRENT_RELEASE_DATE = '24 สิงหาคม 2569';
 
     const DEFAULT_APP_META = {
@@ -9808,7 +9808,7 @@
       if ($('inp_meta_affil_short')) $('inp_meta_affil_short').value = meta.creatorAffiliationShort || '';
       if ($('inp_meta_affil_full')) $('inp_meta_affil_full').value = meta.creatorAffiliationFull || '';
       if ($('inp_meta_date')) $('inp_meta_date').value = meta.releaseDate || getThaiTodayString();
-      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.9.6';
+      if ($('inp_meta_version')) $('inp_meta_version').value = meta.appVersion || 'v2.9.7';
       
       const modal = $('appMetaModal');
       if (modal) modal.style.display = 'flex';
@@ -9827,7 +9827,7 @@
         creatorAffiliationShort: ($('inp_meta_affil_short') ? $('inp_meta_affil_short').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationShort,
         creatorAffiliationFull: ($('inp_meta_affil_full') ? $('inp_meta_affil_full').value.trim() : '') || DEFAULT_APP_META.creatorAffiliationFull,
       releaseDate: '24 เธชเธดเธเธซเธฒเธเธก 2569',
-      appVersion: 'v2.9.6'
+      appVersion: 'v2.9.7'
       };
 
       try {
