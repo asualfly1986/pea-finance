@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
-    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.20 WCAG AAA) ==================== */
+    /* ==================== 5-PALETTE MULTI-THEME ENGINE (v3.0.21 WCAG AAA) ==================== */
     :root {
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -4973,7 +4973,7 @@
               <!-- Meta Dates & Version -->
               <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:var(--text-muted); border-top:1px dashed var(--border); padding-top:8px; flex-wrap:wrap; gap:6px;">
                 <span id="creatorCardDate">📅 <b>วันที่จัดทำ/เผยแพร่:</b> 25 สิงหาคม 2569</span>
-                <span class="badge badge-purple" id="creatorCardVersion">&#x26A1; PEA Financial Planner v3.0.20</span>
+                <span class="badge badge-purple" id="creatorCardVersion">&#x26A1; PEA Financial Planner v3.0.21</span>
               </div>
 
               <!-- Force Update & Refresh Button -->
@@ -5369,6 +5369,72 @@
   </div>
 
     <!-- ==================== PERSONAL PROFILE EDIT MODAL ==================== -->
+    <!-- APP METADATA & VERSION ADMIN MODAL -->
+  <div id="appMetaModal" class="qr-modal-overlay" style="display:none;" onclick="if(event.target===this) closeMetaModal()">
+    <div class="qr-modal-card" style="max-width:540px; max-height:90vh; overflow-y:auto; padding:20px; border-radius:18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1.5px solid var(--border); padding-bottom:10px; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-size:1.3rem;">โ๏ธ</span>
+          <b style="font-size:1.05rem; color:var(--text-main);">เธเธฑเธ”เธเธฒเธฃเธเนเธญเธกเธนเธฅเน€เธงเธญเธฃเนเธเธฑเธ &amp; เธเธนเนเธเธฑเธ”เธ—เธณ</b>
+        </div>
+        <button type="button" class="btn-close" onclick="closeMetaModal()" style="background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div>
+          <label class="input-label" style="font-size:0.82rem; font-weight:700;">เธเธทเนเธญ-เธเธฒเธกเธชเธเธธเธฅ เธเธนเนเธเธฑเธ”เธ—เธณ:</label>
+          <input type="text" class="form-input" id="inp_meta_name" placeholder="เธเธฒเธขเธญเธ เธดเธเธฒเธ•เธด เธขเธธเธเธดเธ">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div>
+            <label class="input-label" style="font-size:0.82rem; font-weight:700;">เธฃเธซเธฑเธชเธเธเธฑเธเธเธฒเธ:</label>
+            <input type="text" class="form-input" id="inp_meta_empid" placeholder="504195">
+          </div>
+          <div>
+            <label class="input-label" style="font-size:0.82rem; font-weight:700;">เธ•เธณเนเธซเธเนเธ:</label>
+            <input type="text" class="form-input" id="inp_meta_position" placeholder="เธเธเธฑเธเธเธฒเธเธเนเธฒเธ เธฃเธฐเธ”เธฑเธ 6">
+          </div>
+        </div>
+
+        <div>
+          <label class="input-label" style="font-size:0.82rem; font-weight:700;">เธชเธฑเธเธเธฑเธ”เธขเนเธญ:</label>
+          <input type="text" class="form-input" id="inp_meta_affil_short" placeholder="เธเธเธ./เธเธเธช.เธเธ.2/เธเธเธ.เธเธ./เธเธเธ.1/เธชเธฒเธขเธเธฒเธ (เธ)">
+        </div>
+
+        <div>
+          <label class="input-label" style="font-size:0.82rem; font-weight:700;">เธชเธฑเธเธเธฑเธ”เน€เธ•เนเธก (1 เธเธฃเธฃเธ—เธฑเธ”เธ•เนเธญ 1 เธซเธเนเธงเธขเธเธฒเธ):</label>
+          <textarea class="form-input" id="inp_meta_affil_full" rows="4" style="resize:vertical;"></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:10px;">
+          <div>
+            <label class="input-label" style="font-size:0.82rem; font-weight:700;">เธงเธฑเธเธ—เธตเนเธเธฑเธ”เธ—เธณ/เน€เธเธขเนเธเธฃเน:</label>
+            <input type="text" class="form-input" id="inp_meta_date" placeholder="25 เธชเธดเธเธซเธฒเธเธก 2569">
+          </div>
+          <div>
+            <label class="input-label" style="font-size:0.82rem; font-weight:700;">เน€เธงเธญเธฃเนเธเธฑเธเนเธญเธ:</label>
+            <input type="text" class="form-input" id="inp_meta_version" placeholder="v3.0.21" readonly style="background:var(--card-sub); cursor:not-allowed;">
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:10px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-outline" style="width:auto; padding:8px 14px; font-size:0.8rem; color:var(--danger); border-color:#FECACA;" onclick="resetAppMetadata()">
+            <span>๐” เธเธทเธเธเนเธฒเน€เธฃเธดเนเธกเธ•เนเธ</span>
+          </button>
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn btn-outline" style="width:auto; padding:8px 16px; font-size:0.82rem;" onclick="closeMetaModal()">
+              <span>เธขเธเน€เธฅเธดเธ</span>
+            </button>
+            <button type="button" class="btn btn-purple" style="width:auto; padding:8px 20px; font-size:0.82rem; font-weight:700;" onclick="saveAppMetadata()">
+              <span>๐’พ เธเธฑเธเธ—เธถเธเธเนเธญเธกเธนเธฅ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="profileModal" class="qr-modal-overlay" style="display:none;" onclick="if(event.target===this) closeProfileModal()">
     <div class="qr-modal-content" style="max-width:440px; padding:18px;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid var(--border); padding-bottom:8px;">
@@ -5655,7 +5721,7 @@
     if ('caches' in window) {
       caches.keys().then(keys => {
         keys.forEach(k => {
-          if (k !== 'pea-finance-v3.0.20') {
+          if (k !== 'pea-finance-v3.0.21') {
             console.log('Purging old cache:', k);
             caches.delete(k);
           }
@@ -6969,7 +7035,7 @@
         const inflationRate = infRate / 100;
 
         const desiredExpenseToday = num('pea_desiredExpenseToday') || 25000;
-        const monthlyCoop = num('pea_coopShareMonthly') || 1000;
+        const monthlyCoop = num('pea_coopSharePerMonth') || (state.pea_coopSharePerMonth || 1000);
         const monthlyPfRate = (num('pea_employeeRate') || num('pea_pfRate') || 5) / 100;
         const peaMatchRate = monthlyPfRate;
 
@@ -8562,7 +8628,7 @@
       const totalIncome = (state.inc_salary || 0) + (state.inc_pea_electric || 0) + (state.inc_pea_shift || 0) + (state.inc_pea_hazard || 0) + (state.inc_business || 0) + (state.inc_rent || 0) + (state.inc_dividend || 0) + (state.inc_bonus || 0) + (state.inc_other || 0);
       let totalDebtMonthly = 0;
       if (state.debts) state.debts.forEach(d => { totalDebtMonthly += (d.monthly || 0); });
-      const totalExpense = (state.exp_housing || 0) + (state.exp_car || 0) + (state.exp_home || 0) + (state.exp_family || 0) + (state.exp_insurance || 0) + (state.exp_lifestyle || 0) + totalDebtMonthly + (state.exp_saving || 0) + (state.exp_tax || 0);
+      const totalExpense = (state.exp_pea_tax || 0) + (state.exp_pea_cremation || 0) + (state.exp_housing || 0) + (state.exp_car || 0) + (state.exp_home || 0) + (state.exp_family || 0) + (state.exp_insurance || 0) + (state.exp_lifestyle || 0) + totalDebtMonthly + (state.exp_saving || 0) + (state.exp_tax || 0);
       const curNetCashflow = totalIncome - totalExpense;
       const isDeficit = (curNetCashflow < 0);
       const monthlyDeficit = isDeficit ? Math.abs(curNetCashflow) : 0;
@@ -8816,7 +8882,7 @@
       const totalIncome = (state.inc_salary || 0) + (state.inc_pea_electric || 0) + (state.inc_pea_shift || 0) + (state.inc_pea_hazard || 0) + (state.inc_business || 0) + (state.inc_rent || 0) + (state.inc_dividend || 0) + (state.inc_bonus || 0) + (state.inc_other || 0);
       let totalDebtMonthly = 0;
       if (state.debts) state.debts.forEach(d => { totalDebtMonthly += (d.monthly || 0); });
-      const totalExpense = (state.exp_housing || 0) + (state.exp_car || 0) + (state.exp_home || 0) + (state.exp_family || 0) + (state.exp_insurance || 0) + (state.exp_lifestyle || 0) + totalDebtMonthly + (state.exp_saving || 0) + (state.exp_tax || 0);
+      const totalExpense = (state.exp_pea_tax || 0) + (state.exp_pea_cremation || 0) + (state.exp_housing || 0) + (state.exp_car || 0) + (state.exp_home || 0) + (state.exp_family || 0) + (state.exp_insurance || 0) + (state.exp_lifestyle || 0) + totalDebtMonthly + (state.exp_saving || 0) + (state.exp_tax || 0);
       const curNetCashflow = totalIncome - totalExpense;
       const isDeficit = (curNetCashflow < 0);
       const monthlyDeficit = isDeficit ? Math.abs(curNetCashflow) : 0;
@@ -10033,7 +10099,7 @@
     const DEFAULT_USER_AVATAR = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iIzdDM0FFRCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjRkZGRkZGIi8+PHBhdGggZD0iTTIwIDg2IEMyMCA2NiAzNSA2MiA1MCA2MiBDNjUgNjIgODAgNjYgODAgODYgWiIgZmlsbD0iI0ZGRkZGRiIvPjwvc3ZnPg==';
 
     // ==================== APP METADATA & VERSION CONFIG ====================
-    const CURRENT_APP_VERSION = 'v3.0.20';
+    const CURRENT_APP_VERSION = 'v3.0.21';
     const CURRENT_RELEASE_DATE = '25 สิงหาคม 2569';
 
     const DEFAULT_APP_META = {
